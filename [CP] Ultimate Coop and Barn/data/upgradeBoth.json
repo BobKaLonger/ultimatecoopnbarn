@@ -4,7 +4,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "Entries": {
-                "bobkalonger.ultimatecoopnbarnCP_SuperDenseBarn": {
+                "{{ModId}}_SuperDenseBarn": {
                     "ID": "{{i18n:building.ultimate-barn.name}}",
                     "Name": "{{i18n:building.ultimate-barn.name}}",
                     "Description": "{{i18n:building.ultimate-barn.description}}",
@@ -139,7 +139,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_SuperDenseBarn",
+                    "IndoorMap": "ultimate_{{Barn Floor}}_SuperDenseBarn",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
@@ -192,7 +192,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "Entries": {
-                "bobkalonger.ultimatecoopnbarnCP_SuperDenseCoop": {
+                "{{ModId}}_SuperDenseCoop": {
                     "ID": "{{i18n:building.ultimate-coop.name}}",
                     "Name": "{{i18n:building.ultimate-coop.name}}",
                     "Description": "{{i18n:building.ultimate-coop.description}}",
@@ -285,7 +285,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_SuperDenseCoop",
+                    "IndoorMap": "ultimate_{{Coop Floor}}_SuperDenseCoop",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [

@@ -4,7 +4,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "Entries": {
-                "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
+                "{{ModId}}_UltimateBarn": {
                     "ID": "{{i18n:building.ultimate-barn.name}}",
                     "Name": "{{i18n:building.ultimate-barn.name}}",
                     "Description": "{{i18n:building.ultimate-barn.description}}",
@@ -109,7 +109,7 @@
                             }
 						}
                     ],
-                    "IndoorMap": "ultimate_UltimateBarn",
+                    "IndoorMap": "ultimate_{{Barn Floor}}_UltimateBarn",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
@@ -126,7 +126,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "Entries": {
-                "bobkalonger.ultimatecoopnbarnCP_UltimateCoop": {
+                "{{ModId}}_UltimateCoop": {
                     "ID": "{{i18n:building.ultimate-coop.name}}",
                     "Name": "{{i18n:building.ultimate-coop.name}}",
                     "Description": "{{i18n:building.ultimate-coop.description}}",
@@ -231,7 +231,7 @@
                             }
 						}
                     ],
-                    "IndoorMap": "ultimate_UltimateCoop",
+                    "IndoorMap": "ultimate_{{Coop Floor}}_UltimateCoop",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
