@@ -4,12 +4,26 @@
         "Barn Floor": {
             "AllowValues": "Clean, Cozy",
             "Description": "Choose the flooring for your barn.",
-            "Default": "Clean"
+            "Default": "Clean",
+            "Section": "Indoor Appearance"
         },
         "Coop Floor": {
             "AllowValues": "Clean, Cozy",
             "Description": "Choose the flooring for your coop.",
-            "Default": "Clean"
+            "Default": "Clean",
+            "Section": "Indoor Appearance"
+        },
+        "Barn Texture": {
+            "AllowValues": "Vanilla, Modded",
+            "Description": "Choose your barn texture. (Only works with JP98 Upgradeable Barns and Coops!)",
+            "Default": "Vanilla",
+            "Section": "Outdoor Appearance"
+        },
+        "Coop Texture": {
+            "AllowValues": "Vanilla, Modded",
+            "Description": "Choose your coop texture. (Only works with JP98 Upgradeable Barns and Coops or Resource Chickens!)",
+            "Default": "Vanilla",
+            "Section": "Outdoor Appearance"
         }
     },
 	"Changes": [
