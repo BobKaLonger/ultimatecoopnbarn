@@ -3,7 +3,7 @@
 
 Adds an immense new upgrade tier for the coop and barn, holding 48 animals. Auto-compatible with SVE and multiple other coop and barn mods, and you can choose between a clean or a cozy interior!
 
-This mod adapts to your modlist in a safe way. The mod will check for the compatible mods listed below, and change its config internally based on logic. Please note that adding or removing the compatible mods will **not** break this mod. The behavior that is dynamic is Robin's upgrade menu, meaning the building to be upgraded and those upgrade costs are the only things to change. Check the table below for compatible mods and expected mod behavior!
+This mod adapts to your modlist in a safe way. The mod will check for the compatible mods listed below, and change its config internally based on logic. Please note that adding or removing the compatible mods will **not** break this mod. The behavior that is dynamic is Robin's upgrade menu, meaning the building to be upgraded and those upgrade costs are the only things to change. If my Ultimate buildings are already present on your farm, removing compatible mods will **not** break those Ultimate buildings (again, only the upgrade cost and "building to upgrade" in change Robin's construction menu). Check the table below for compatible mods and expected mod behavior!
 
 
 **--Compatible Mods--**
