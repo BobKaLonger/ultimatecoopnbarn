@@ -113,10 +113,20 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeBoth.json",
+            "FromFile": "data/upgradeBoth_vanilla.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Both"
+                "bobkalonger.UltCB_code/UltimateMode": "Both",
+                "Coop Texture": "Vanilla"
+            }
+        },
+        {
+            "Action": "Include",
+            "FromFile": "data/upgradeBoth_modded.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "Both",
+                "Coop Texture": "Modded"
             }
         },
         {
@@ -129,18 +139,60 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeUARC.json",
+            "FromFile": "data/upgradeUARC_vanilla.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "UARC"
+                "bobkalonger.UltCB_code/UltimateMode": "UARC",
+                "Coop Texture": "Vanilla"
             }
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeJPUBC.json",
+            "FromFile": "data/upgradeUARC_modded.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "JPUBC"
+                "bobkalonger.UltCB_code/UltimateMode": "UARC",
+                "Coop Texture": "Modded"
+            }
+        },
+        {
+            "Action": "Include",
+            "FromFile": "data/upgradeJPUBC_vanilla.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
+                "Barn Texture": "Vanilla",
+                "Coop Texture": "Vanilla"
+            }
+        },
+        {
+            "Action": "Include",
+            "FromFile": "data/upgradeJPUBC_barn.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
+                "Barn Texture": "Modded",
+                "Coop Texture": "Vanilla"
+            }
+        },
+        {
+            "Action": "Include",
+            "FromFile": "data/upgradeJPUBC_coop.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
+                "Barn Texture": "Vanilla",
+                "Coop Texture": "Modded"
+            }
+        },
+        {
+            "Action": "Include",
+            "FromFile": "data/upgradeJPUBC_modded.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
+                "Barn Texture": "Modded",
+                "Coop Texture": "Modded"
             }
         },
         {

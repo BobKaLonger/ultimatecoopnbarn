@@ -9,6 +9,7 @@ using StardewValley.Objects;
 using System;
 using System.Collections.Generic;
 using StardewValley.GameData.Buildings;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace ultimatecoopnbarn
