@@ -123,6 +123,14 @@
         },
         {
             "Action": "Include",
+            "FromFile": "data/upgradeJPUBC.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "JPUBC"
+            }
+        },
+        {
+            "Action": "Include",
             "FromFile": "data/upgradeVanilla.json",
             "When":
             {
