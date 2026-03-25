@@ -20,6 +20,9 @@ https://www.nexusmods.com/stardewvalley/mods/25586
 Resource Chickens
 https://www.nexusmods.com/stardewvalley/mods/21800
 
+JP's Upgradeable Barns and Coops
+https://www.nexusmods.com/stardewvalley/mods/42753
+
 
 **--Mods Adding Coop/Barn Animals--**
 
@@ -39,8 +42,6 @@ https://www.nexusmods.com/stardewvalley/mods/9704
 Vibrant Pastoral Redrawn
 https://www.nexusmods.com/stardewvalley/mods/6367
 
-*If you're using Resource Chickens, the Ultimate Coop will revert back to the vanilla Deluxe Coop texture. The author of Resource Chickens prefers their assets not be re-used in mods that receive donation points, so I chose to go back to the vanilla appearance. You could probably just swap the textures manually if that's your preference.
-
 
 **--Incompatible Mods--**
 
@@ -48,9 +49,6 @@ I have reviewed the mods below, and believe their behavior to be directly confli
 
 Warm Stalls and Cozy Boxes - A Barns and Coops Overhaul (Map Conflict)
 https://www.nexusmods.com/stardewvalley/mods/43227
-
-JP's Upgradeable Barns and Coops (Restrictive Permissions from Mod Author)
-https://www.nexusmods.com/stardewvalley/mods/42753
 
 Natural Cozy Coops and Barns (Map Conflict)
 https://www.nexusmods.com/stardewvalley/mods/39411
@@ -103,4 +101,3 @@ https://www.nexusmods.com/stardewvalley/mods/9362
 
 !.!.!.!.need to check.!.!.!.!
 https://www.nexusmods.com/stardewvalley/mods/40936
-https://www.nexusmods.com/stardewvalley/mods/33514
