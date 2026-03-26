@@ -73,7 +73,6 @@ namespace ultimatecoopnbarn
             bool hasBKGCB = Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn");
             bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
             bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
-            bool hasJPUBC = Helper.ModRegistry.IsLoaded("Juanpa98ar.BarnsCoops.UBC");
 
             if (hasSVE)
             {
@@ -97,10 +96,6 @@ namespace ultimatecoopnbarn
             else if (hasUARC)
             {
                 return "UARC";
-            }
-            else if (hasJPUBC)
-            {
-                return "JPUBC";
             }
             else
             {

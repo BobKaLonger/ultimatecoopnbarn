@@ -3,27 +3,15 @@
 	"ConfigSchema": {
         "Barn Floor": {
             "AllowValues": "Clean, Cozy",
-            "Description": "Choose the flooring for your barn.",
+            "Description": "Choose the interior for your barn.",
             "Default": "Clean",
             "Section": "Indoor Appearance"
         },
         "Coop Floor": {
             "AllowValues": "Clean, Cozy",
-            "Description": "Choose the flooring for your coop.",
+            "Description": "Choose the interior for your coop.",
             "Default": "Clean",
             "Section": "Indoor Appearance"
-        },
-        "Barn Texture": {
-            "AllowValues": "Vanilla, Modded",
-            "Description": "Choose your barn texture. (Only works with JP98 Upgradeable Barns and Coops!)",
-            "Default": "Vanilla",
-            "Section": "Outdoor Appearance"
-        },
-        "Coop Texture": {
-            "AllowValues": "Vanilla, Modded",
-            "Description": "Choose your coop texture. (Only works with JP98 Upgradeable Barns and Coops or Resource Chickens!)",
-            "Default": "Vanilla",
-            "Section": "Outdoor Appearance"
         }
     },
 	"Changes": [
@@ -113,20 +101,10 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeBoth_vanilla.json",
+            "FromFile": "data/upgradeBoth.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Both",
-                "Coop Texture": "Vanilla"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeBoth_modded.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "Both",
-                "Coop Texture": "Modded"
+                "bobkalonger.UltCB_code/UltimateMode": "Both"
             }
         },
         {
@@ -139,60 +117,10 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeUARC_vanilla.json",
+            "FromFile": "data/upgradeUARC.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "UARC",
-                "Coop Texture": "Vanilla"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeUARC_modded.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "UARC",
-                "Coop Texture": "Modded"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeJPUBC_vanilla.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
-                "Barn Texture": "Vanilla",
-                "Coop Texture": "Vanilla"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeJPUBC_barn.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
-                "Barn Texture": "Modded",
-                "Coop Texture": "Vanilla"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeJPUBC_coop.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
-                "Barn Texture": "Vanilla",
-                "Coop Texture": "Modded"
-            }
-        },
-        {
-            "Action": "Include",
-            "FromFile": "data/upgradeJPUBC_modded.json",
-            "When":
-            {
-                "bobkalonger.UltCB_code/UltimateMode": "JPUBC",
-                "Barn Texture": "Modded",
-                "Coop Texture": "Modded"
+                "bobkalonger.UltCB_code/UltimateMode": "UARC"
             }
         },
         {
