@@ -9,7 +9,8 @@ using StardewValley.Objects;
 using System;
 using System.Collections.Generic;
 using StardewValley.GameData.Buildings;
-using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
+using System.Threading;
 
 
 namespace ultimatecoopnbarn
@@ -151,6 +152,119 @@ namespace ultimatecoopnbarn
                 if (light.StartsWith("{UltimateCP}"))
                 {
                     Game1.currentLightSources.Remove(light);
+                }
+            }
+        }
+
+        private static List<(Vector2 tile, StardewValley.Object obj)> SpiralSearch(GameLocation location, string qualifiedId, Vector2 center, int maxRadius)
+        {
+            var results = new List<(Vector2, StardewValley.Object)>();
+
+            for (int radius = 0; radius <= maxRadius; radius++)
+            {
+                for (int dx = -radius; dx <= radius; dx++)
+                {
+                    for (int dy = -radius; dy <= radius; dy++)
+                    {
+                        if (Math.Abs(dx) != radius && Math.Abs(dy) != radius)
+                            continue;
+                        
+                        Vector2 tile = new Vector2(center.X + dx, center.Y + dy);
+                        if (location.objects.TryGetValue(tile, out StardewValley.Object obj) && obj.QualifiedItemId == qualifiedId)
+                        {
+                            results.Add((tile, obj));
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        private static Vector2 LandingPadRect(GameLocation location, Microsoft.Xna.Framework.Rectangle landingPad)
+        {
+            for (int y = landingPad.Top; y < landingPad.Bottom; y++)
+            {
+                for (int x = landingPad.Left; x < landingPad.Right; x++)
+                {
+                    Vector2 candidate = new Vector2(x, y);
+                    if (!location.IsTileBlockedBy(candidate, CollisionMask.Objects | CollisionMask.Furniture))
+                    {
+                        return candidate;
+                    }
+                }
+            }
+            return Vector2.Zero;
+        }
+
+        [HarmonyPatch(typeof(Building), nameof(Building.InitializeIndoor))]
+        public static class UpgradeMoves
+        {
+            public static void Postfix(Building __instance, bool forUpgrade)
+            {
+                if (!forUpgrade) return;
+
+                GameLocation interior = __instance.GetIndoors();
+                if (interior == null) return;
+
+                string[] excludedIds = { "(BC)99", "(O)178" };
+
+                if (__instance.buildingType.Value is UltimateBarn or SuperDenseBarn)
+                    {
+                        var itemsToMove = interior.objects.Pairs
+                            .Where(p => !excludedIds.Contains(p.Value.QualifiedItemId))
+                            .ToList();
+
+                        var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 21, y: 21, width: 21, height: 24);
+
+                        foreach (var pair in itemsToMove)
+                        {
+                            Vector2 dest = LandingPadRect(interior, landingPad);
+                            interior.objects.Remove(pair.Key);
+                            pair.Value.TileLocation = dest;
+                            interior.objects[dest] = pair.Value;
+                        }
+                    }
+                else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop)
+                {
+                    Vector2[] incubatorDestinations =
+                    {
+                        new Vector2(2, 14),
+                        new Vector2(2, 22),
+                        new Vector2(2, 30)
+                    };
+                    
+                    Vector2 startCenter = new Vector2(
+                        interior.map.Layers[0].LayerWidth / 2,
+                        interior.map.Layers[0].LayerHeight / 2
+                    );
+
+                    var foundIncubators = SpiralSearch(interior, "(BC)101", startCenter, maxRadius: 50);
+                    
+                    for (int i = 0; i < foundIncubators.Count && i < incubatorDestinations.Length; i++)
+                    {
+                        var (sourceTile, obj) = foundIncubators[i];
+                        Vector2 dest = incubatorDestinations[i];
+                        interior.objects.Remove(sourceTile);
+                        obj.TileLocation = dest;
+                        interior.objects[dest] = obj;
+                    }
+
+                    string[] coopExcluded = excludedIds.Append("(BC)101").ToArray();
+                    var coopItemMoves = interior.objects.Pairs
+                        .Where(p => !coopExcluded.Contains(p.Value.QualifiedItemId))
+                        .ToList();
+
+                    var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 20, y: 7, width: 16, height: 36);
+
+                    foreach (var pair in coopItemMoves)
+                    {
+                        
+                        Vector2 dest = LandingPadRect(interior, landingPad);
+                        interior.objects.Remove(pair.Key);
+                        pair.Value.TileLocation = dest;
+                        interior.objects[dest] = pair.Value;
+                    } 
                 }
             }
         }
