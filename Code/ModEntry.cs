@@ -130,14 +130,14 @@ namespace ultimatecoopnbarn
                     var ultimateLightC = new Point(b.tileX.Value + 6, b.tileY.Value + 2);
                     var lc = new LightSource($"{UltimateCP}CoopLight_{b.tileX.Value}_{b.tileY.Value}", 4, ultimateLightC.ToVector2() * Game1.tileSize, 1f, Color.Black, LightSource.LightContext.None);
                     Game1.currentLightSources.Add(lc.Id, lc);
-
-                    if (b.buildingType.Value == UltimatePremiumCoop)
-                    {
-                        var ultimateLightPCP = new Point(b.tileX.Value + 6, b.tileY.Value + 2);
-                        var lp = new LightSource($"{UltimateCP}PremiumCoopLight_patch_{b.tileX.Value}_{b.tileY.Value}", 4, ultimateLightPCP.ToVector2() * Game1.tileSize, 1f, Color.Black, LightSource.LightContext.None);
-                        Game1.currentLightSources.Add(lp.Id, lp);
-                    }
                 }
+
+                if (b.buildingType.Value == UltimatePremiumCoop)
+                {
+                    var ultimateLightPCP = new Point(b.tileX.Value + 6, b.tileY.Value + 2);
+                    var lp = new LightSource($"{UltimateCP}PremiumCoopLight_patch_{b.tileX.Value}_{b.tileY.Value}", 4, ultimateLightPCP.ToVector2() * Game1.tileSize, 1f, Color.Black, LightSource.LightContext.None);
+                    Game1.currentLightSources.Add(lp.Id, lp);
+                }                
             }
         }
 
@@ -146,13 +146,11 @@ namespace ultimatecoopnbarn
             if (location == null || !Context.IsWorldReady)
                 return;
 
-            foreach (var light in Game1.currentLightSources.Keys)
-            {
-                if (light.StartsWith(UltimateCP))
-                {
-                    Game1.currentLightSources.Remove(light);
-                }
-            }
+            var toRemove = Game1.currentLightSources.Keys
+                .Where(k => k.StartsWith(UltimateCP))
+                .ToList();
+            foreach (var key in toRemove)
+                Game1.currentLightSources.Remove(key);
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
@@ -504,7 +502,7 @@ namespace ultimatecoopnbarn
                     __instance.buildingType.Value != UltimateBarn)
                     return;
 
-                foreach (var obj in __instance.indoors.Value.Objects.Values)
+                foreach (var obj in __instance.indoors.Value.objects.Values)
                 {
                     if (obj.QualifiedItemId == "(BC)165" && obj.heldObject.Value == null)
                     {
