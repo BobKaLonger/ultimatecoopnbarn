@@ -163,8 +163,6 @@ namespace ultimatecoopnbarn
                 Building building = Game1.getFarm().getBuildingAt(tile);
                 if (building == null) continue;
 
-                if (building.daysUntilUpgrade.Value > 0) continue;
-
                 GameLocation interior = building.GetIndoors();
                 if (interior == null) continue;
 
@@ -225,6 +223,7 @@ namespace ultimatecoopnbarn
             {
                 if (!forUpgrade) return;
                 if (__instance.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop)) return;
+                if (__instance.daysUntilUpgrade.Value > 0) return;
 
                 ModEntry.modInstance._upgradedBuildings.Add(new Vector2(__instance.tileX.Value, __instance.tileY.Value));
             }
