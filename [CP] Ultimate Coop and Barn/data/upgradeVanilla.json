@@ -370,7 +370,7 @@
                             "Id": "Second_Incubator",
                             "ItemId": "(BC)101",
                             "Tile": {
-                                "X": 2,
+                                "X": 3,
                                 "Y": 41
                             },
                             "Indestructible": false
@@ -379,7 +379,7 @@
                             "Id": "Third_Incubator",
                             "ItemId": "(BC)101",
                             "Tile": {
-                                "X": 3,
+                                "X": 4,
                                 "Y": 41
                             },
                             "Indestructible": false
@@ -388,7 +388,7 @@
                             "Id": "Fourth_Incubator",
                             "ItemId": "(BC)101",
                             "Tile": {
-                                "X": 4,
+                                "X": 5,
                                 "Y": 41
                             },
                             "Indestructible": false
