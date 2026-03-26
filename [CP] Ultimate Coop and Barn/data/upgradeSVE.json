@@ -31,9 +31,22 @@
 					"FadeWhenBehind": true,
 					"BuildCondition": null,
 					"BuildingToUpgrade": "FlashShifter.StardewValleyExpandedCP_PremiumBarn",
-                    "BuildDays": 1,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+                    "BuildDays": 3,
+                    "BuildCost": 500000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 900
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 450
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 30
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                         "X": 0,
                         "Y": 5
@@ -196,9 +209,22 @@
                     "BuildingType": null,
 					"BuildCondition": null,
 					"BuildingToUpgrade": "FlashShifter.StardewValleyExpandedCP_PremiumCoop",
-            		"BuildDays": 2,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+            		"BuildDays": 3,
+                    "BuildCost": 400000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 700
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 300
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 20
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                 		"X": 0,
                 		"Y": 0

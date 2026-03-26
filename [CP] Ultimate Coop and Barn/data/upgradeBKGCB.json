@@ -31,9 +31,22 @@
                     "FadeWhenBehind": true,
                     "BuildCondition": null,
                     "BuildingToUpgrade": "bobkalonger.gigacoopnbarn_GigaBarn",
-                    "BuildDays": 2,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+                    "BuildDays": 1,
+                    "BuildCost": 0,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 200
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 450
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 30
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                         "X": 0,
                         "Y": 0
@@ -283,9 +296,22 @@
                     "FadeWhenBehind": true,
                     "BuildCondition": null,
                     "BuildingToUpgrade": "bobkalonger.gigacoopnbarn_GigaCoop",
-                    "BuildDays": 2,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+                    "BuildDays": 1,
+                    "BuildCost": 0,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 100
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 300
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 20
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                         "X": 0,
                         "Y": 0

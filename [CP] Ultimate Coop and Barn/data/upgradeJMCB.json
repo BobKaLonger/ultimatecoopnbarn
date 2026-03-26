@@ -31,9 +31,22 @@
                     "FadeWhenBehind": true,
                     "BuildCondition": null,
                     "BuildingToUpgrade": "jenf1.megacoopbarn_MegaBarn",
-                    "BuildDays": 2,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+                    "BuildDays": 3,
+                    "BuildCost": 200000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 900
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 450
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 30
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                         "X": 0,
                         "Y": 0
@@ -254,9 +267,22 @@
                     "FadeWhenBehind": true,
                     "BuildCondition": null,
                     "BuildingToUpgrade": "jenf1.megacoopbarn_MegaCoop",
-                    "BuildDays": 2,
-                    "BuildCost": 10,
-                    "BuildMaterials": [],
+                    "BuildDays": 3,
+                    "BuildCost": 180000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 700
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 300
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 20
+                        }
+                    ],
                     "BuildMenuDrawOffset": {
                         "X": 0,
                         "Y": 0
