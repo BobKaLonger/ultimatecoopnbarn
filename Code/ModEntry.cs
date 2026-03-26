@@ -148,7 +148,7 @@ namespace ultimatecoopnbarn
 
             foreach (var light in Game1.currentLightSources.Keys)
             {
-                if (light.StartsWith("{UltimateCP}"))
+                if (light.StartsWith(UltimateCP))
                 {
                     Game1.currentLightSources.Remove(light);
                 }
@@ -162,11 +162,21 @@ namespace ultimatecoopnbarn
                 if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop)) continue;
                 if (building.daysUntilUpgrade.Value > 0) continue;
 
-                string upgradeKey = $"{ModManifest.UniqueID}/upgradedKey";
+                GameLocation interior = building.GetIndoors();
+                if (interior == null) continue;
+
+                string upgradeKey = $"{ModManifest.UniqueID}/buildingKey";
                 string currentLevel = building.buildingType.Value;
 
                 building.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
                 if (lastMovedLevel == currentLevel) continue;
+
+                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn)
+                    BarnItemMoves(interior);
+                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop)
+                    CoopItemMoves(interior);
+
+                building.modData[upgradeKey] = currentLevel;
             }
         }
 
@@ -213,6 +223,8 @@ namespace ultimatecoopnbarn
 
         private static void BarnItemMoves(GameLocation interior)
         {
+            if (interior.map == null) return;
+            
             string[] excludedIds = { "(BC)99", "(O)178" };
 
             var itemsToMove = interior.objects.Pairs
@@ -234,6 +246,8 @@ namespace ultimatecoopnbarn
         
         private static void CoopItemMoves(GameLocation interior)
         {
+            if (interior.map == null) return;
+
             string[] excludedIds = { "(BC)99", "(O)178" };
             
             Vector2[] incubatorDestinations =
