@@ -139,7 +139,7 @@ namespace ultimatecoopnbarn
         {
             foreach (Building building in Game1.getFarm().buildings)
             {
-                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop)) continue;
+                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop)) continue;
                 if (building.daysUntilUpgrade.Value > 0) continue;
 
                 GameLocation interior = building.GetIndoors();
@@ -151,9 +151,9 @@ namespace ultimatecoopnbarn
                 building.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
                 if (lastMovedLevel == currentLevel) continue;
 
-                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn)
+                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn or UltimatePremiumBarn)
                     BarnItemMoves(interior);
-                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop)
+                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
                     CoopItemMoves(interior);
 
                 building.modData[upgradeKey] = currentLevel;
@@ -207,13 +207,13 @@ namespace ultimatecoopnbarn
             
             string[] excludedIds = { "(BC)99", "(O)178" };
 
-            var itemsToMove = interior.objects.Pairs
+            var barnItemMoves = interior.objects.Pairs
                 .Where(p => !excludedIds.Contains(p.Value.QualifiedItemId))
                 .ToList();
                 
             var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 21, y: 21, width: 21, height: 24);
 
-            foreach (var pair in itemsToMove)
+            foreach (var pair in barnItemMoves)
             {
                 Vector2 dest = LandingPadRect(interior, landingPad);
                 if (dest == Vector2.Zero) continue;
