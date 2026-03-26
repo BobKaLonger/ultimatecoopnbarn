@@ -69,38 +69,25 @@ namespace ultimatecoopnbarn
         }
         private string ComputeUltimateMode()
         {
-            bool hasSVE = Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP");
-            bool hasBKGCB = Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn");
+            if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP"))
+                return "SVE";
+
+            if (Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn"))
+                return "BKGCB";
+
             bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
             bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
 
-            if (hasSVE)
-            {
-                return "SVE";
-            }
-            else if (hasBKGCB)
-            {
-                return "BKGCB";
-            }
-            else if (hasJMCB)
-            {
-                if (hasUARC)
-                {
-                    return "Both";
-                }
-                else
-                {
-                    return "JMCB";
-                }
-            }
-            else if (hasUARC)
-            {
+            if (hasJMCB && hasUARC)
+                return "Both";
+            
+            if (hasJMCB)
+                return "JMCB";
+
+            if (hasUARC)
                 return "UARC";
-            }
-            else
-            {
-                return "Vanilla";
-            }
+            
+            return "Vanilla";
         }
 
         private void PlayerOnWarped(object sender, WarpedEventArgs e)
