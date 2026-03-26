@@ -220,7 +220,7 @@ namespace ultimatecoopnbarn
                         foreach (var pair in itemsToMove)
                         {
                             Vector2 dest = LandingPadRect(interior, landingPad);
-                            interior.objects.Remove(pair.Key);
+                            interior.removeObject(pair.Key, false);
                             pair.Value.TileLocation = dest;
                             interior.objects[dest] = pair.Value;
                         }
@@ -262,7 +262,7 @@ namespace ultimatecoopnbarn
                     {
                         
                         Vector2 dest = LandingPadRect(interior, landingPad);
-                        interior.objects.Remove(pair.Key);
+                        interior.removeObject(pair.Key, false);
                         pair.Value.TileLocation = dest;
                         interior.objects[dest] = pair.Value;
                     } 

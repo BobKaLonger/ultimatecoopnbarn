@@ -312,7 +312,7 @@
                             "ItemId": "(BC)101",
                             "Tile": {
                                 "X": 2,
-                                "Y": 42
+                                "Y": 41
                             },
                             "Indestructible": false
                         },
@@ -321,7 +321,7 @@
                             "ItemId": "(BC)101",
                             "Tile": {
                                 "X": 3,
-                                "Y": 42
+                                "Y": 41
                             },
                             "Indestructible": false
                         },
@@ -330,7 +330,7 @@
                             "ItemId": "(BC)101",
                             "Tile": {
                                 "X": 4,
-                                "Y": 42
+                                "Y": 41
                             },
                             "Indestructible": false
                         }
