@@ -117,6 +117,49 @@
                     ],
 					"AllowAnimalPregnancy": true,
                     "IndoorItems": [],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 6,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 29
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 17,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 39
+                            },
+                            "Size": {
+                                "X": 4,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 4,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 26,
+                                "Y": 19
+                            }
+                        }
+                    ],
                     "CustomFields": null
                 }
             }
@@ -237,16 +280,60 @@
                     "ValidOccupantTypes": [
                         "Coop"
                     ],
-                    "IndoorItems": [
-						{
-							"Id": "UltCB_Extra_Incubator",
-							"ItemId": "(BC)101",
-							"Tile": {
-								"X": 24,
-								"Y": 4
-							},
-							"Indestructible": false
-						}
+                    "IndoorItems": [],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 5,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 14
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 16,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 22
+                            },
+                            "Size": {
+                                "X": 4,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 22,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 38,
+                                "Y": 36
+                            }
+                        },
+                        {
+                          "Id": "Default_Incubator",
+                          "Source": {
+                                "X": 3,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 2,
+                                "Y": 14
+                            }
+                        }
 					],
                     "CustomFields": null
                 }

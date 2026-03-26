@@ -148,20 +148,11 @@
                     "AllowAnimalPregnancy": true,
                     "IndoorItems": [
                         {
-                            "Id": "Default_FeedHopper",
-                            "ItemId": "(BC)99",
-                            "Tile": {
-                                "X": 21,
-                                "Y": 3
-                            },
-                            "Indestructible": true
-                        },
-                        {
                             "Id": "Default_Heater",
                             "ItemId": "(BC)104",
                             "Tile": {
-                                "X": 44,
-                                "Y": 3
+                                "X": 41,
+                                "Y": 19
                             },
                             "Indestructible": false
                         },
@@ -169,8 +160,8 @@
                             "Id": "Default_AutoPetter",
                             "ItemId": "(BC)272",
                             "Tile": {
-                                "X": 45,
-                                "Y": 3
+                                "X": 21,
+                                "Y": 19
                             },
                             "Indestructible": false
                         },
@@ -178,10 +169,53 @@
                             "Id": "Default_AutoGrabber",
                             "ItemId": "(BC)165",
                             "Tile": {
-                                "X": 20,
-                                "Y": 3
+                                "X": 36,
+                                "Y": 19
                             },
                             "Indestructible": false
+                        }
+                    ],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 8,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 29
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 19,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 39
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 6,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 26,
+                                "Y": 19
+                            }
                         }
                     ],
                     "CustomFields": null
@@ -293,39 +327,12 @@
                     ],
                     "AllowAnimalPregnancy": false,
                     "IndoorItems": [
-    					{
-						    "Id": "Default_FeedHopper",
-						    "ItemId": "(BC)99",
-						    "Tile": {
-    							"X": 4,
-							    "Y": 3
-						    },
-						    "Indestructible": true
-					    },
-					    {
-    						"Id": "Default_Incubator",
-						    "ItemId": "(BC)101",
-						    "Tile": {
-    							"X": 3,
-							    "Y": 3
-						    },
-						    "Indestructible": true
-					    },
-					    {
-    						"Id": "Extra_Incubator",
-						    "ItemId": "(BC)101",
-						    "Tile": {
-    							"X": 24,
-							    "Y": 3
-						    },
-						    "Indestructible": false
-					    },
-					    {
+                        {
                             "Id": "Default_Heater",
                             "ItemId": "(BC)104",
                             "Tile": {
-                            	"X": 23,
-                        	    "Y": 3
+                                "X": 28,
+                                "Y": 6
                             },
                             "Indestructible": false
                         },
@@ -333,19 +340,62 @@
                             "Id": "Default_AutoPetter",
                             "ItemId": "(BC)272",
                             "Tile": {
-                            	"X": 13,
-                        	    "Y": 26
+                                "X": 29,
+                                "Y": 6
                             },
                             "Indestructible": false
                         },
-                        {
+					    {
                             "Id": "Default_AutoGrabber",
                             "ItemId": "(BC)165",
                             "Tile": {
-                            	"X": 14,
-                        	    "Y": 26
+                                "X": 39,
+                                "Y": 36
                             },
                             "Indestructible": false
+                        }
+                    ],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 6,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 14
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 17,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 22
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 4,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 38,
+                                "Y": 36
+                            }
                         }
 		    	    ],
                     "CustomFields": null
