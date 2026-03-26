@@ -20,9 +20,6 @@ https://www.nexusmods.com/stardewvalley/mods/25586
 Resource Chickens
 https://www.nexusmods.com/stardewvalley/mods/21800
 
-JP's Upgradeable Barns and Coops
-https://www.nexusmods.com/stardewvalley/mods/42753
-
 
 **--Mods Adding Coop/Barn Animals--**
 
@@ -46,6 +43,9 @@ https://www.nexusmods.com/stardewvalley/mods/6367
 **--Incompatible Mods--**
 
 I have reviewed the mods below, and believe their behavior to be directly conflicting with Ultimate Coop and Barn. Using my mod with any mod listed below will cause unexpected behavior or crashes! I still posted links to all the pages because many of these are extremely cool and I think the mod authors deserve a shout out!
+
+JP's Upgradeable Barns and Coops (Map Conflict with Coop and Barn Facelift Redux, not worth investing my time to integrate until this issue is fixed)
+https://www.nexusmods.com/stardewvalley/mods/42753
 
 Warm Stalls and Cozy Boxes - A Barns and Coops Overhaul (Map Conflict)
 https://www.nexusmods.com/stardewvalley/mods/43227

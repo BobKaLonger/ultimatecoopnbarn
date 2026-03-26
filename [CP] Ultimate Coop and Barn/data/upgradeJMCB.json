@@ -207,7 +207,7 @@
                         {
                             "Id": "Old_Hay2",
                             "Source": {
-                                "X": 19,
+                                "X": 20,
                                 "Y": 3
                             },
                             "Destination": {
@@ -419,7 +419,7 @@
                         {
                             "Id": "Old_Hay2",
                             "Source": {
-                                "X": 17,
+                                "X": 18,
                                 "Y": 3
                             },
                             "Destination": {
@@ -434,7 +434,7 @@
                         {
                             "Id": "Default_Feeder",
                             "Source": {
-                                "X": 4,
+                                "X": 3,
                                 "Y": 3
                             },
                             "Destination": {
