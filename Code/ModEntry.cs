@@ -231,7 +231,8 @@ namespace ultimatecoopnbarn
                     {
                         new Vector2(2, 14),
                         new Vector2(2, 22),
-                        new Vector2(2, 30)
+                        new Vector2(2, 30),
+                        new Vector2(2, 38)
                     };
                     
                     Vector2 startCenter = new Vector2(

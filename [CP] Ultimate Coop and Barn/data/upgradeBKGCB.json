@@ -383,6 +383,15 @@
                                 "Y": 36
                             },
                             "Indestructible": false
+                        },
+                        {
+                            "Id": "Fourth_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 2,
+                                "Y": 42
+                            },
+                            "Indestructible": false
                         }
                     ],
                     "IndoorItemMoves": [
