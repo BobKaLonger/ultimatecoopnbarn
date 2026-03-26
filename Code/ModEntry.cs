@@ -29,7 +29,6 @@ namespace ultimatecoopnbarn
         internal const string SuperDenseCoop = $"{UltimateCP}SuperDenseCoop";
         private const string UltimatePremiumCoop = $"{SVExpandCP}PremiumCoop";
         private const string UltimatePremiumBarn = $"{SVExpandCP}PremiumBarn";
-        public HashSet<Vector2> _upgradedBuildings = new();
         public override void Entry(IModHelper helper)
         {
             modInstance = this;
@@ -158,22 +157,16 @@ namespace ultimatecoopnbarn
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
-            foreach (Vector2 tile in _upgradedBuildings.ToList())
+            foreach (Building building in Game1.getFarm().buildings)
             {
-                Building building = Game1.getFarm().getBuildingAt(tile);
-                if (building == null) continue;
+                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop)) continue;
+                if (building.daysUntilUpgrade.Value > 0) continue;
 
-                if (building.daysUntilUpgrade.Value > 0) return;
+                string upgradeKey = $"{ModManifest.UniqueID}/upgradedKey";
+                string currentLevel = building.buildingType.Value;
 
-                GameLocation interior = building.GetIndoors();
-                if (interior == null) continue;
-
-                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn)
-                    BarnItemMoves(interior);
-                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop)
-                    CoopItemMoves(interior);
-
-                _upgradedBuildings.Remove(tile);
+                building.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
+                if (lastMovedLevel == currentLevel) continue;
             }
         }
 
@@ -216,18 +209,6 @@ namespace ultimatecoopnbarn
                 }
             }
             return Vector2.Zero;
-        }
-
-        [HarmonyPatch(typeof(Building), nameof(Building.InitializeIndoor))]
-        public static class UpgradeItemMoves
-        {
-            public static void Postfix(Building __instance, bool forUpgrade)
-            {
-                if (!forUpgrade) return;
-                if (__instance.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop)) return;
-
-                ModEntry.modInstance._upgradedBuildings.Add(new Vector2(__instance.tileX.Value, __instance.tileY.Value));
-            }
         }
 
         private static void BarnItemMoves(GameLocation interior)
