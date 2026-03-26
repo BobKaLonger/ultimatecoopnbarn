@@ -295,7 +295,7 @@ namespace ultimatecoopnbarn
                     __result.UpgradeSignHeight = 50f;
                 }
                 
-                if (__instance.upgradeName.Value == UltimatePremiumCoop)
+                if (__instance.upgradeName.Value == UltimateCoop)
                 {
                     __result.UpgradeSignTile = new Vector2(4.5f, 4f);
                     __result.UpgradeSignHeight = 28f;
