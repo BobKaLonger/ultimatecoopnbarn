@@ -2,8 +2,8 @@
   <PropertyGroup>
     <AssemblyName>ultimatecoopnbarn</AssemblyName>
     <RootNamespace>ultimatecoopnbarn</RootNamespace>
-    <Version>1.6.9</Version>
-    <TargetFramework>net6.0</TargetFramework>
+    <Version>1.6.10</Version>
+    <TargetFramework>net8.0</TargetFramework>
     <Platforms>AnyCPU</Platforms>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <EnableHarmony>true</EnableHarmony>
