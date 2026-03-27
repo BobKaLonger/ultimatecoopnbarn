@@ -114,7 +114,7 @@ namespace ultimatecoopnbarn
                         if (hasJMCB) return "Mega";
                         return "Giant";
                     }
-                    else return manual;
+                    else result = manual;
                 }
                 else
                 {
