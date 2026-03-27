@@ -57,8 +57,6 @@ namespace ultimatecoopnbarn
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        private IManagedTokenString _upgradeConfig;
-
         ///<inheritdoc cref="IGameLoopEvents.GameLaunched"/>
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
@@ -82,21 +80,25 @@ namespace ultimatecoopnbarn
         }
         private IContentPatcherAPI _cp;
         private string _lastMode;
+        private string GetUpgradeConfig()
+        {
+            var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
+            if (config != null && config.TryGetValue("Ultimate Building Upgrade", out string value))
+                return value;
+            return "Auto";
+        }
         private string ComputeUltimateMode()
         {
-            if (_upgradeConfig is null && _cp?.IsConditionsApiReady == true)
-            _upgradeConfig = _cp.ParseTokenString(ModManifest, "{{Ultimate Building Upgrade}}", new SemanticVersion("2.9.0"));
-
-            _upgradeConfig?.UpdateContext();
+            string upgradeChoice = GetUpgradeConfig();
 
             bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
             bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
 
             string result;
 
-            if (_upgradeConfig?.IsReady == true && _upgradeConfig.Value != "Auto")
+            if (upgradeChoice != "Auto")
             {
-                string manual = _upgradeConfig.Value;
+                string manual = upgradeChoice;
 
                 bool validSelection = manual switch
                 {
