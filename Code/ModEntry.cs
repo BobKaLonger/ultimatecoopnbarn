@@ -81,6 +81,7 @@ namespace ultimatecoopnbarn
             return new[] { ComputeUltimateMode() };
         }
         private IContentPatcherAPI _cp;
+        private string _lastMode;
         private string ComputeUltimateMode()
         {
             if (_upgradeConfig is null && _cp?.IsConditionsApiReady == true)
@@ -90,6 +91,8 @@ namespace ultimatecoopnbarn
 
             bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
             bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
+
+            string result;
 
             if (_upgradeConfig?.IsReady == true && _upgradeConfig.Value != "Auto")
             {
@@ -111,26 +114,35 @@ namespace ultimatecoopnbarn
                         if (hasJMCB) return "Mega";
                         return "Giant";
                     }
-                    return manual;
+                    else return manual;
                 }
-                Monitor.Log($"Config set to '{manual}' but that mod isn't installed, falling back on automatic behavior.", LogLevel.Warn);
+                else
+                {
+                    Monitor.Log($"Config set to '{manual}' but that mod isn't installed, falling back on automatic behavior.", LogLevel.Warn);
+                    result = ComputeAuto(hasJMCB, hasUARC);
+                }
+            }
+            else
+            {
+                result = ComputeAuto(hasJMCB, hasUARC);
             }
 
-            if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP"))
-                return "SVE";
+            if (result != _lastMode)
+            {
+                _lastMode = result;
+                Helper.GameContent.InvalidateCache("Data/Buildings");
+            }
 
-            if (Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn"))
-                return "Giga";
+            return result;
+        }
 
-            if (hasJMCB && hasUARC)
-                return "Both";
-            
-            if (hasJMCB)
-                return "Mega";
-
-            if (hasUARC)
-                return "Giant";
-            
+        private string ComputeAuto(bool hasJMCB, bool hasUARC)
+        {
+            if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) return "SVE";
+            if (Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn")) return "Giga";
+            if (hasJMCB && hasUARC) return "Both";
+            if (hasJMCB) return "Mega";
+            if (hasUARC) return "Giant";
             return "Vanilla";
         }
 
