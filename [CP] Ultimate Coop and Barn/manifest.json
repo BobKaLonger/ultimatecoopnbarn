@@ -1,10 +1,10 @@
 {
 	"Name": "Ultimate Coop and Barn",
 	"Author": "bobkalonger",
-	"Version": "1.4.1",
+	"Version": "1.6.10",
 	"Description": "Adds a new upgrade level to coops and barns, increasing the animal limit to 48!",
 	"UniqueID": "bobkalonger.ultimatecoopnbarnCP",
-	"UpdateKeys": [ "Nexus:???" ],
+	"UpdateKeys": [ "Nexus:44285" ],
 	"ContentPackFor": {
 		"UniqueID": "Pathoschild.ContentPatcher",
 		"MinimumVersion": "2.0.0"
