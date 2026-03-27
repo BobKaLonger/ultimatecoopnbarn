@@ -94,7 +94,3 @@ https://www.nexusmods.com/stardewvalley/mods/11782
 
 Joja's Barn and Coop Interior (Map Conflict)
 https://www.nexusmods.com/stardewvalley/mods/9362
-
-
-!.!.!.!.need to check.!.!.!.!
-https://www.nexusmods.com/stardewvalley/mods/40936

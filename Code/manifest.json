@@ -5,7 +5,7 @@
     "Description": "Code for Ultimate Coop and Barn",
     "UniqueID": "bobkalonger.UltCB_code",
     "EntryDll": "ultimatecoopnbarn.dll",
-    "UpdateKeys": [ "Nexus:???" ],
+    "UpdateKeys": [ "Nexus:44285" ],
     "Dependencies": [
         {
             "UniqueID": "Pathoschild.ContentPatcher",
