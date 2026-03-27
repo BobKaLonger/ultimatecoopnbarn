@@ -23,6 +23,7 @@ namespace ultimatecoopnbarn
     }
     public interface IContentPatcherAPI
     {
+        bool IsConditionsApiReady { get; }
         IManagedTokenString ParseTokenString(IManifest manifest, string rawValue, ISemanticVersion formatVersion, string[] assumeModIds = null);
         void RegisterToken(IManifest mod, string name, Func<IEnumerable<string>> getValue);
     }
@@ -68,9 +69,8 @@ namespace ultimatecoopnbarn
                 return;
             }
 
-            _upgradeConfig = cp.ParseTokenString(ModManifest, "{{Ultimate Building Upgrade}}", new SemanticVersion("2.9.0"));
-
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
+            _cp = cp;
         }
         private IEnumerable<string> GetUltimateMode()
         {
@@ -80,14 +80,18 @@ namespace ultimatecoopnbarn
             }
             return new[] { ComputeUltimateMode() };
         }
+        private IContentPatcherAPI _cp;
         private string ComputeUltimateMode()
         {
-            _upgradeConfig.UpdateContext();
+            if (_upgradeConfig is null && _cp?.IsConditionsApiReady == true)
+            _upgradeConfig = _cp.ParseTokenString(ModManifest, "{{Ultimate Building Upgrade}}", new SemanticVersion("2.9.0"));
+
+            _upgradeConfig?.UpdateContext();
 
             bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
             bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
 
-            if (_upgradeConfig.IsReady && _upgradeConfig.Value != "Auto")
+            if (_upgradeConfig?.IsReady == true && _upgradeConfig.Value != "Auto")
             {
                 string manual = _upgradeConfig.Value;
 
