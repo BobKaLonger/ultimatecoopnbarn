@@ -13,8 +13,17 @@ using System.Linq;
 
 namespace ultimatecoopnbarn
 {
+    public interface IManagedTokenString
+    {
+        bool IsValid { get; }
+        string ValidationError { get; }
+        bool IsReady { get; }
+        string Value { get; }
+        IEnumerable<int> UpdateContext();
+    }
     public interface IContentPatcherAPI
     {
+        IManagedTokenString ParseTokenString(IManifest manifest, string rawValue, ISemanticVersion formatVersion, string[] assumeModIds = null);
         void RegisterToken(IManifest mod, string name, Func<IEnumerable<string>> getValue);
     }
     public class ModEntry : Mod
@@ -47,15 +56,19 @@ namespace ultimatecoopnbarn
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
+        private IManagedTokenString _upgradeConfig;
+
         ///<inheritdoc cref="IGameLoopEvents.GameLaunched"/>
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             var cp = Helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
             if (cp is null)
             {
-                Monitor.Log("Content Patcher not found; dynamic token will not be available.", LogLevel.Warn);
+                Monitor.Log("Content Patcher not found; dynamic tokens will not be available.", LogLevel.Warn);
                 return;
             }
+
+            _upgradeConfig = cp.ParseTokenString(ModManifest, "{{Ultimate Building Upgrade}}", new SemanticVersion("2.9.0"));
 
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
         }
@@ -69,23 +82,50 @@ namespace ultimatecoopnbarn
         }
         private string ComputeUltimateMode()
         {
+            _upgradeConfig.UpdateContext();
+
+            bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
+            bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
+
+            if (_upgradeConfig.IsReady && _upgradeConfig.Value != "Auto")
+            {
+                string manual = _upgradeConfig.Value;
+
+                bool validSelection = manual switch
+                {
+                    "SVE"  => Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP"),
+                    "Giga" => Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn"),
+                    "Mega" => Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn") || Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens"),
+                    _      => false
+                };
+
+                if (validSelection)
+                {
+                    if (manual == "Mega")
+                    {
+                        if (hasJMCB && hasUARC) return "Both";
+                        if (hasJMCB) return "Mega";
+                        return "Giant";
+                    }
+                    return manual;
+                }
+                Monitor.Log($"Config set to '{manual}' but that mod isn't installed, falling back on automatic behavior.", LogLevel.Warn);
+            }
+
             if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP"))
                 return "SVE";
 
             if (Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn"))
-                return "BKGCB";
-
-            bool hasJMCB = Helper.ModRegistry.IsLoaded("jenf1.megacoopbarn");
-            bool hasUARC = Helper.ModRegistry.IsLoaded("UncleArya.ResourceChickens");
+                return "Giga";
 
             if (hasJMCB && hasUARC)
                 return "Both";
             
             if (hasJMCB)
-                return "JMCB";
+                return "Mega";
 
             if (hasUARC)
-                return "UARC";
+                return "Giant";
             
             return "Vanilla";
         }

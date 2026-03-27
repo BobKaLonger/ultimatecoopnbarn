@@ -1,5 +1,5 @@
 {
-	"Format": "2.6.0",
+	"Format": "2.9.0",
 	"ConfigSchema": {
         "Barn Floor": {
             "AllowValues": "Clean, Cozy",
@@ -12,6 +12,12 @@
             "Description": "Choose the interior for your coop.",
             "Default": "Clean",
             "Section": "Indoor Appearance"
+        },
+        "Ultimate Building Upgrade": {
+            "AllowValues": "Auto, Giga, Mega",
+            "Description": "Choose which buildings to upgrade, for SVE or Vanilla please select AUTO!",
+            "Default": "Auto",
+            "Section": "Upgrade Path"
         }
     },
 	"Changes": [
@@ -93,10 +99,10 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeBKGCB.json",
+            "FromFile": "data/upgradeGiga.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "BKGCB"
+                "bobkalonger.UltCB_code/UltimateMode": "Giga"
             }
         },
         {
@@ -109,18 +115,18 @@
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeJMCB.json",
+            "FromFile": "data/upgradeMega.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "JMCB"
+                "bobkalonger.UltCB_code/UltimateMode": "Mega"
             }
         },
         {
             "Action": "Include",
-            "FromFile": "data/upgradeUARC.json",
+            "FromFile": "data/upgradeGiant.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "UARC"
+                "bobkalonger.UltCB_code/UltimateMode": "Giant"
             }
         },
         {

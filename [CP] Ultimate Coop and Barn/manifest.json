@@ -7,17 +7,17 @@
 	"UpdateKeys": [ "Nexus:44285" ],
 	"ContentPackFor": {
 		"UniqueID": "Pathoschild.ContentPatcher",
-		"MinimumVersion": "2.0.0"
+		"MinimumVersion": "2.9.0"
 	},
 	"Dependencies": [
 		{
 			"UniqueID": "Pathoschild.ContentPatcher",
-			"MinimumVersion": "2.0.0",
+			"MinimumVersion": "2.9.0",
 			"IsRequired": true
 		},
 		{
 			"UniqueID": "bobkalonger.UltCB_code",
-			"MinimumVersion": "1.6.7",
+			"MinimumVersion": "1.6.10",
 			"IsRequired": true
 		},
 		{
