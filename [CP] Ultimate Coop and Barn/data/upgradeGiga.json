@@ -424,22 +424,22 @@
                         {
                             "Id": "Old_Hay1",
                             "Source": {
-                                "X": 10,
+                                "X": 8,
                                 "Y": 3
                             },
                             "Destination": {
                                 "X": 4,
-                                "Y": 12
+                                "Y": 14
                             },
                             "Size": {
-                                "X": 14,
+                                "X": 12,
                                 "Y": 1
                             }
                         },
                         {
                             "Id": "Old_Hay2",
                             "Source": {
-                                "X": 22,
+                                "X": 20,
                                 "Y": 3
                             },
                             "Destination": {
@@ -454,7 +454,7 @@
                         {
                             "Id": "Old_Hay3",
                             "Source": {
-                                "X": 10,
+                                "X": 8,
                                 "Y": 12
                             },
                             "Destination": {
@@ -469,7 +469,7 @@
                         {
                             "Id": "Old_Hay4",
                             "Source": {
-                                "X": 22,
+                                "X": 20,
                                 "Y": 12
                             },
                             "Destination": {
