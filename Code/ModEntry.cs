@@ -337,6 +337,9 @@ namespace ultimatecoopnbarn
             {
                 if (__result == null)
                     return;
+
+                if (modInstance.Helper.ModRegistry.IsLoaded("bobkalonger.BFS_util"))
+                    return;
                 
                 if (__instance.upgradeName.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop))
                     return;
