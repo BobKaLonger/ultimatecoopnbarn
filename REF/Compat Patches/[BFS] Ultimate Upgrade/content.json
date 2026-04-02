@@ -20,7 +20,7 @@
         {
             "LogName": "Ultimate Barn Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Barn Upgrade": "Deluxe"
             },
@@ -42,7 +42,7 @@
         {
             "LogName": "Ultimate Coop Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Coop Upgrade": "Deluxe"
             },
@@ -64,7 +64,7 @@
         {
             "LogName": "Ultimate Barn Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Barn Upgrade": "Mega"
             },
@@ -86,7 +86,7 @@
         {
             "LogName": "Ultimate Coop Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Coop Upgrade": "Mega"
             },
@@ -108,7 +108,7 @@
         {
             "LogName": "Ultimate Coop Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Coop Upgrade": "Giant"
             },
@@ -130,7 +130,7 @@
         {
             "LogName": "Ultimate Barn Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Barn Upgrade": "Giga"
             },
@@ -152,7 +152,7 @@
         {
             "LogName": "Ultimate Coop Upgrade",
             "Action": "EditData",
-            "Priority": "Late",
+            "Priority": "Latest",
             "When": {
                 "Ultimate Coop Upgrade": "Giga"
             },
