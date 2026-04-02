@@ -29,10 +29,10 @@
                 "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
                     "BuildingToUpgrade": "Deluxe Barn",
                     "UpgradeSignTile": {
-                        "X": 4.5,
+                        "X": 5.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "50",
+                    "UpgradeSignHeight": "34",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -54,7 +54,7 @@
                         "X": 4.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "52",
+                    "UpgradeSignHeight": "68",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -73,10 +73,10 @@
                 "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
                     "BuildingToUpgrade": "jenf1.megacoopbarn_MegaBarn",
                     "UpgradeSignTile": {
-                        "X": 4.5,
+                        "X": 5.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "50",
+                    "UpgradeSignHeight": "34",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -98,7 +98,7 @@
                         "X": 4.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "52",
+                    "UpgradeSignHeight": "68",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -120,7 +120,7 @@
                         "X": 4.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "52",
+                    "UpgradeSignHeight": "68",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -139,10 +139,10 @@
                 "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
                     "BuildingToUpgrade": "bobkalonger.gigacoopnbarn_GigaBarn",
                     "UpgradeSignTile": {
-                        "X": 4.5,
+                        "X": 5.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "50",
+                    "UpgradeSignHeight": "34",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
@@ -164,7 +164,7 @@
                         "X": 4.5,
                         "Y": 4
                     },
-                    "UpgradeSignHeight": "52",
+                    "UpgradeSignHeight": "68",
                     "CustomFields": {
                         "bobkalonger.BFS_util/ForceMove": "true"
                     }
