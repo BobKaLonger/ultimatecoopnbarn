@@ -1,0 +1,44 @@
+{
+    "Format": "2.9.0",
+
+    "Changes": [   
+        {
+            "LogName": "Premium Barn Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "Target": "Data/Buildings",
+            "Fields": {
+                "FlashShifter.StardewValleyExpandedCP_PremiumBarn": {
+                    "BuildingToUpgrade": "Deluxe Barn",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "50",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Premium Coop Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "Target": "Data/Buildings",
+            "Fields": {
+                "FlashShifter.StardewValleyExpandedCP_PremiumCoop": {
+                    "BuildingToUpgrade": "Deluxe Coop",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "52",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -626,7 +626,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Back" visible="0">
+ <objectgroup id="5" name="Back">
   <object id="1" name="TileData" x="224" y="720" width="16" height="16">
    <properties>
     <property name="NPCBarrier" value="T"/>
@@ -637,22 +637,22 @@
     <property name="NPCBarrier" value="T"/>
    </properties>
   </object>
-  <object id="3" name="TileData" x="288" y="464" width="16" height="16">
+  <object id="3" name="TileData" x="304" y="464" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="4" name="TileData" x="304" y="464" width="16" height="16">
+  <object id="4" name="TileData" x="320" y="464" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="5" name="TileData" x="688" y="464" width="16" height="16">
+  <object id="5" name="TileData" x="672" y="464" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="6" name="TileData" x="704" y="464" width="16" height="16">
+  <object id="6" name="TileData" x="688" y="464" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
@@ -712,22 +712,22 @@
     <property name="NPCBarrier" value="T"/>
    </properties>
   </object>
-  <object id="36" name="TileData" x="704" y="624" width="16" height="16">
+  <object id="36" name="TileData" x="688" y="624" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="37" name="TileData" x="688" y="624" width="16" height="16">
+  <object id="37" name="TileData" x="672" y="624" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="38" name="TileData" x="304" y="624" width="16" height="16">
+  <object id="38" name="TileData" x="320" y="624" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
   </object>
-  <object id="39" name="TileData" x="288" y="624" width="16" height="16">
+  <object id="39" name="TileData" x="304" y="624" width="16" height="16">
    <properties>
     <property name="WaterSource" value="T"/>
    </properties>
