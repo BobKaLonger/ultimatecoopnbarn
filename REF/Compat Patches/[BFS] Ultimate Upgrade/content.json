@@ -1,14 +1,32 @@
 {
     "Format": "2.9.0",
 
+    "ConfigSchema": {
+        "Ultimate Barn Upgrade": {
+            "AllowValues": "Deluxe, Mega, Giga",
+            "Description": "Choose which barn to upgrade.",
+            "Default": "Deluxe",
+            "Section": "Upgrade Path"
+        },
+        "Ultimate Coop Upgrade": {
+            "AllowValues": "Deluxe, Mega, Giant, Giga",
+            "Description": "Choose which coop to upgrade.",
+            "Default": "Deluxe",
+            "Section": "Upgrade Path"
+        }
+    },
+
     "Changes": [   
         {
-            "LogName": "Premium Barn Upgrade",
+            "LogName": "Ultimate Barn Upgrade",
             "Action": "EditData",
             "Priority": "Late",
+            "When": {
+                "Ultimate Barn Upgrade": "Deluxe"
+            },
             "Target": "Data/Buildings",
             "Fields": {
-                "FlashShifter.StardewValleyExpandedCP_PremiumBarn": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
                     "BuildingToUpgrade": "Deluxe Barn",
                     "UpgradeSignTile": {
                         "X": 4.5,
@@ -22,13 +40,126 @@
             }
         },
         {
-            "LogName": "Premium Coop Upgrade",
+            "LogName": "Ultimate Coop Upgrade",
             "Action": "EditData",
             "Priority": "Late",
+            "When": {
+                "Ultimate Coop Upgrade": "Deluxe"
+            },
             "Target": "Data/Buildings",
             "Fields": {
-                "FlashShifter.StardewValleyExpandedCP_PremiumCoop": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateCoop": {
                     "BuildingToUpgrade": "Deluxe Coop",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "52",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Ultimate Barn Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "When": {
+                "Ultimate Barn Upgrade": "Mega"
+            },
+            "Target": "Data/Buildings",
+            "Fields": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
+                    "BuildingToUpgrade": "jenf1.megacoopbarn_MegaBarn",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "50",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Ultimate Coop Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "When": {
+                "Ultimate Coop Upgrade": "Mega"
+            },
+            "Target": "Data/Buildings",
+            "Fields": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateCoop": {
+                    "BuildingToUpgrade": "jenf1.megacoopbarn_MegaCoop",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "52",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Ultimate Coop Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "When": {
+                "Ultimate Coop Upgrade": "Giant"
+            },
+            "Target": "Data/Buildings",
+            "Fields": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateCoop": {
+                    "BuildingToUpgrade": "UncleArya.ResourceChickens.GiantCoop",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "52",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Ultimate Barn Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "When": {
+                "Ultimate Barn Upgrade": "Giga"
+            },
+            "Target": "Data/Buildings",
+            "Fields": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateBarn": {
+                    "BuildingToUpgrade": "bobkalonger.gigacoopnbarn_GigaBarn",
+                    "UpgradeSignTile": {
+                        "X": 4.5,
+                        "Y": 4
+                    },
+                    "UpgradeSignHeight": "50",
+                    "CustomFields": {
+                        "bobkalonger.BFS_util/ForceMove": "true"
+                    }
+                }
+            }
+        },
+        {
+            "LogName": "Ultimate Coop Upgrade",
+            "Action": "EditData",
+            "Priority": "Late",
+            "When": {
+                "Ultimate Coop Upgrade": "Giga"
+            },
+            "Target": "Data/Buildings",
+            "Fields": {
+                "bobkalonger.ultimatecoopnbarnCP_UltimateCoop": {
+                    "BuildingToUpgrade": "bobkalonger.gigacoopnbarn_GigaCoop",
                     "UpgradeSignTile": {
                         "X": 4.5,
                         "Y": 4
