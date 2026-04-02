@@ -1,10 +1,10 @@
 {
-    "Name": "SVE Premium Upgrade",
+    "Name": "Ultimate Upgrade",
     "Author": "bobkalonger",
     "Version": "1.0.0",
-    "UniqueID": "bobkalonger.SVE_PremiumUpgrade",
+    "UniqueID": "bobkalonger.UltimateUpgrade",
     "MinimumApiVersion": "4.4.0",
-    "Description": "This mod will shift the SVE Premium Coop and Barn to upgrade the Deluxe Coop and Barn, rather than require new buildings.",
+    "Description": "This mod will shift the Ultimate Coop and Barn to upgrade the Deluxe/Mega/Giga Coop and Barn (and Giant Coop), while retaining the larger footprint and exterior texture of the SVE Premium Coop or Barn, including the extra doors.",
     "UpdateKeys": [ "Nexus:44285" ],
     "ContentPackFor": {
         "UniqueID": "Pathoschild.ContentPatcher",
