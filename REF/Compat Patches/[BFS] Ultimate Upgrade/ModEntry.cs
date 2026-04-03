@@ -55,8 +55,8 @@ namespace UltimateUpgrade
                 mod: ModManifest,
                 getValue: () => _config.UltimateBarnUpgrade,
                 setValue: val => _config.UltimateBarnUpgrade = val,
-                name: () => "Ultimate Coop Upgrade",
-                tooltip: () => "Choose which coop to upgrade.",
+                name: () => "Ultimate Barn Upgrade",
+                tooltip: () => "Choose which barn to upgrade.",
                 allowedValues: new[] { "Deluxe", "Mega", "Giga" }
             );
 
@@ -86,7 +86,7 @@ namespace UltimateUpgrade
                         "Giga" => "bobkalonger.gigacoopnbarn_GigaBarn",
                         _ => "Deluxe Barn"
                     };
-                    barnData.UpgradeSignTile = new Vector2(5.5f, 4f);
+                    barnData.UpgradeSignTile = new Vector2(4.5f, 4f);
                     barnData.UpgradeSignHeight = 50f;
                     barnData.CustomFields ??=new();
                     barnData.CustomFields["bobkalonger.BFS_util/ForceMove"] = "true";
