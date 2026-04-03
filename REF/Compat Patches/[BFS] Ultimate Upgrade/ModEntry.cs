@@ -2,6 +2,7 @@ using System;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley.GameData.Buildings;
+using Microsoft.Xna.Framework;
 
 namespace UltimateUpgrade
 {
@@ -85,8 +86,10 @@ namespace UltimateUpgrade
                         "Giga" => "bobkalonger.gigacoopnbarn_GigaBarn",
                         _ => "Deluxe Barn"
                     };
+                    barnData.UpgradeSignTile = new Vector2(5.5f, 4f);
+                    barnData.UpgradeSignHeight = 50f;
                     barnData.CustomFields ??=new();
-                    barnData.CustomFields["bubkalonger.BFS_util/ForceMove"] = "true";
+                    barnData.CustomFields["bobkalonger.BFS_util/ForceMove"] = "true";
                 }
 
                 if (data.TryGetValue("bobkalonger.ultimatecoopnbarnCP_UltimateCoop", out var coopData))
@@ -98,6 +101,8 @@ namespace UltimateUpgrade
                         "Giga" => "bobkalonger.gigacoopnbarn_GigaCoop",
                         _ => "Deluxe Coop"
                     };
+                    coopData.UpgradeSignTile = new Vector2(4.5f, 4f);
+                    coopData.UpgradeSignHeight = 52f;
                     coopData.CustomFields ??= new();
                     coopData.CustomFields["bobkalonger.BFS_util/ForceMove"] = "true";
                 }
