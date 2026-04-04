@@ -58,6 +58,14 @@ namespace ultimatecoopnbarn
                 });
             }
 
+            Helper.Events.GameLoop.ReturnedToTitle += (s, e) =>
+            {
+                _vppConfigWatcher?.Dispose();
+                _vppConfigWatcher = null;
+                _vppDir = null;
+                _cachedEnabled = null;
+            };
+
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Player.Warped += PlayerOnWarped;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
@@ -203,45 +211,65 @@ namespace ultimatecoopnbarn
                 Game1.currentLightSources.Remove(key);
         }
 
-        private string OvercrowdingVPP()
-        {
-            if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
-                return "false";
+        private string _vppDir = null;
+        private bool? _cachedEnabled = null;
+        private FileSystemWatcher _vppConfigWatcher = null;
 
+        private void InitVppWatcher()
+        {
             var vppInfo = Helper.ModRegistry.Get("KediDili.VanillaPlusProfessions");
-            string vppDir = vppInfo?.GetType()
+            _vppDir = vppInfo?.GetType()
                 .GetProperty("DirectoryPath",
                     System.Reflection.BindingFlags.Public |
                     System.Reflection.BindingFlags.NonPublic |
                     System.Reflection.BindingFlags.Instance)
                 ?.GetValue(vppInfo) as string;
+
+            if (_vppDir == null) return;
+
+            _vppConfigWatcher = new FileSystemWatcher(_vppDir, "config.json")
+            {
+                NotifyFilter = NotifyFilters.LastWrite,
+                EnableRaisingEvents = true
+            };
+
+            _vppConfigWatcher.Changed += (s, e) => _cachedEnabled = null;
+        }
+
+        private string OvercrowdingVPP()
+        {
+            if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
+                return "false";                
             
-            if (vppDir == null)
+            if (_vppDir == null)
+                InitVppWatcher();
+
+            if (_vppDir == null)
                 return "false";
 
-            try
+            if (_cachedEnabled == null)
             {
-                string vppConfigPath = Path.Combine(vppDir, "config.json");
-                if (!File.Exists(vppConfigPath))
-                    return "false";
+                try
+                {
+                    string vppConfigPath = Path.Combine(_vppDir, "config.json");
+                    if (!File.Exists(vppConfigPath))
+                        return "false";
                 
-                using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
-                if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
-                    return "false";
+                    using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
+                    if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
+                        return "false";
 
-                bool enabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
-                            || (prop.ValueKind == System.Text.Json.JsonValueKind.String
-                                && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
-                
-                if (!enabled)
-                    return "false";
-            }
-            catch
-            {
+                    _cachedEnabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
+                        || (prop.ValueKind == System.Text.Json.JsonValueKind.String
+                            && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
+                }
+                catch
+                {
                 return "false";
+                }
             }
 
-            return "true";
+            return _cachedEnabled == true ? "true" : "false";
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
