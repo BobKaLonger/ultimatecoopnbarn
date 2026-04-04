@@ -3,6 +3,9 @@
         {
             "Action": "EditData",
             "Target": "Data/Buildings",
+            "When": {
+                "HasValue:{{modVPP}}": "Base" 
+            },
             "Entries": {
                 "{{ModId}}_UltimateBarn": {
                     "ID": "{{i18n:building.ultimate-barn.name}}",
@@ -181,6 +184,9 @@
         {
             "Action": "EditData",
             "Target": "Data/Buildings",
+            "When": {
+                "HasValue:{{modVPP}}": "Base" 
+            },
             "Entries": {
                 "{{ModId}}_UltimateCoop": {
                     "ID": "{{i18n:building.ultimate-coop.name}}",
@@ -374,6 +380,394 @@
                             },
                             "Destination": {
                                 "X": 38,
+                                "Y": 36
+                            }
+                        }
+					],
+                    "CustomFields": null
+                }
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Buildings",
+            "When": {
+                "HasValue:{{modVPP}}": "VPP" 
+            },
+            "Entries": {
+                "{{ModId}}_UltimateBarn": {
+                    "ID": "{{i18n:building.ultimate-barn.name}}",
+                    "Name": "{{i18n:building.ultimate-barn.name}}",
+                    "Description": "{{i18n:building.ultimate-barn.description}}",
+                    "Texture": "Buildings\\SVE_PremiumBarn",
+                    "Skins": [],
+                    "DrawShadow": true,
+                    "MagicalConstruction": false,
+                    "Builder": "Robin",
+                    "Size": {
+                        "X": 11,
+                        "Y": 4
+                    },
+                    "SourceRect": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 176,
+                        "Height": 144
+                    },
+                    "DrawOffset": "0, 0",
+                    "SortTileOffset": 0.0,
+                    "CollisionMap": null,
+                    "AdditionalPlacementTiles": null,
+                    "BuildingType": null,
+					"FadeWhenBehind": true,
+					"BuildCondition": null,
+					"BuildingToUpgrade": "FlashShifter.StardewValleyExpandedCP_PremiumBarn",
+                    "BuildDays": 3,
+                    "BuildCost": 500000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 900
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 450
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 30
+                        }
+                    ],
+                    "BuildMenuDrawOffset": {
+                        "X": 0,
+                        "Y": 5
+                    },
+                    "HumanDoor": {
+                        "X": 1,
+                        "Y": 3
+                    },
+                    "AnimalDoor": {
+                        "X": 4,
+                        "Y": 3,
+                        "Width": 3,
+                        "Height": 1
+                    },
+					"AnimalDoorOpenDuration": 0.75,
+                    "AnimalDoorOpenSound": "doorCreak",
+                    "AnimalDoorCloseDuration": 0.6,
+                    "AnimalDoorCloseSound": "doorCreakReverse",
+					"NonInstancedIndoorLocation": null,
+					"DrawLayers": [
+					    {
+                            "Id": "UltCB_Default_Overlay",
+							"Texture": null,
+                            "SourceRect": {
+                              "X": 98,
+                              "Y": 144,
+                              "Width": 44,
+                              "Height": 32
+                              },
+							"DrawPosition": "66, 83",
+                            "DrawInBackground": false
+						},
+						{
+                            "Id": "UltCB_Default_AnimalDoor",
+							"Texture": null,
+                            "SourceRect": {
+                              "X": 2,
+                              "Y": 146,
+                              "Width": 44,
+                              "Height": 28
+                              },
+							"DrawPosition": "66, 115",
+							"DrawInBackground": false,
+							"SortTileOffset": 0.02,
+							"OnlyDrawIfChestHasContents": null,
+							"FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+							"AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": -24
+                            }
+                        },
+                        {
+                            "Id": "UltCB_Default_AnimalDoor_Open",
+							"Texture": null,
+                            "SourceRect": {
+                              "X": 50,
+                              "Y": 146,
+                              "Width": 44,
+                              "Height": 28
+                              },
+							"DrawPosition": "66, 115",
+                            "DrawInBackground": false,
+							"SortTileOffset": 1.0,
+							"OnlyDrawIfChestHasContents": null,
+							"FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+							"AnimalDoorOffset": {
+							  "X": 0,
+							  "Y": 0
+                            }
+						}
+                    ],
+                    "IndoorMap": "ultimate_{{Barn Floor}}{{modVPP}}_UltimateBarn",
+                    "IndoorMapType": "StardewValley.AnimalHouse",
+                    "MaxOccupants": 64,
+                    "ValidOccupantTypes": [
+                        "Barn"
+                    ],
+					"AllowAnimalPregnancy": true,
+                    "IndoorItems": [],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 6,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 5,
+                                "Y": 29
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 18,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 5,
+                                "Y": 39
+                            },
+                            "Size": {
+                                "X": 4,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 4,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 31,
+                                "Y": 19
+                            }
+                        }
+                    ],
+                    "CustomFields": null
+                }
+            }
+        },
+
+        {
+            "Action": "EditData",
+            "Target": "Data/Buildings",
+            "When": {
+                "HasValue:{{modVPP}}": "VPP" 
+            },
+            "Entries": {
+                "{{ModId}}_UltimateCoop": {
+                    "ID": "{{i18n:building.ultimate-coop.name}}",
+                    "Name": "{{i18n:building.ultimate-coop.name}}",
+                    "Description": "{{i18n:building.ultimate-coop.description}}",
+                    "Texture": "Buildings\\SVE_PremiumCoop",
+                    "Skins": [],
+                    "DrawShadow": true,
+                    "MagicalConstruction": false,
+                    "Builder": "Robin",
+                    "Size": {
+                        "X": 9,
+                        "Y": 4
+                    },
+					"FadeWhenBehind": true,
+					"SourceRect": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 144,
+                        "Height": 144
+                    },
+                    "DrawOffset": "0, 0",
+                    "SortTileOffset": "2.5",
+					"CollisionMap": "XXXXXXOOO\nXXXXXXXXX\nXXXXXXXXX\nXXXXXXOOO",
+					"AdditionalPlacementTiles": null,
+                    "BuildingType": null,
+					"BuildCondition": null,
+					"BuildingToUpgrade": "FlashShifter.StardewValleyExpandedCP_PremiumCoop",
+            		"BuildDays": 3,
+                    "BuildCost": 400000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 700
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 300
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 20
+                        }
+                    ],
+                    "BuildMenuDrawOffset": {
+                		"X": 0,
+                		"Y": 0
+					},
+            		"HumanDoor": {
+                		"X": 7,
+                		"Y": 2
+		    		},
+            		"AnimalDoor": {
+                		"X": 2,
+                		"Y": 3,
+                		"Width": 2,
+                		"Height": 1
+            		},
+					"AnimalDoorOpenDuration": 0.3125,
+					"AnimalDoorOpenSound": "doorCreak",
+					"AnimalDoorCloseDuration": 0.3125,
+					"AnimalDoorCloseSound": "doorCreakReverse",
+					"NonInstancedIndoorLocation": null,
+					"DrawLayers": [
+					    {
+                            "Id": "UltCB_Default_Overlay",
+							"Texture": null,
+                            "SourceRect": {
+                              	"X": 90,
+                              	"Y": 146,
+                              	"Width": 40,    
+                              	"Height": 12
+                            },
+							"DrawPosition": "28, 116",
+                            "DrawInBackground": false
+						},
+					    {
+                            "Id": "UltCB_Default_AnimalDoor",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 0,
+                                "Y": 144,
+                                "Width": 40,
+                                "Height": 16
+                            },
+                            "DrawPosition": "28, 127",
+                            "DrawInBackground": false,
+						    "SortTileOffset": 0.02,
+						    "OnlyDrawIfChestHasContents": null,
+						    "FrameDuration": 90,
+						    "FrameCount": 1,
+						    "FramesPerRow": -1,
+						    "AnimalDoorOffset": {
+							    "X": 0,
+							    "Y": -12
+                            }
+					    },
+					    {
+                            "Id": "UltCB_Default_AnimalDoor_Open",
+							"Texture": null,
+                            "SourceRect": {
+                            	"X": 48,
+                            	"Y": 144,
+                            	"Width": 40,
+                            	"Height": 16
+                            },
+							"DrawPosition": "28, 127",
+                            "DrawInBackground": false,
+							"SortTileOffset": 1.0,
+							"OnlyDrawIfChestHasContents": null,
+							"FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+							"AnimalDoorOffset": {
+								"X": 0,
+								"Y": 0
+                            }
+						}
+                    ],
+                    "IndoorMap": "ultimate_{{Coop Floor}}{{modVPP}}_UltimateCoop",
+                    "IndoorMapType": "StardewValley.AnimalHouse",
+                    "MaxOccupants": 64,
+                    "ValidOccupantTypes": [
+                        "Coop"
+                    ],
+                    "IndoorItems": [
+                        {
+                            "Id": "Second_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 2,
+                                "Y": 41
+                            },
+                            "Indestructible": false
+                        },
+                        {
+                            "Id": "Third_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 3,
+                                "Y": 41
+                            },
+                            "Indestructible": false
+                        },
+                        {
+                            "Id": "Fourth_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 4,
+                                "Y": 41
+                            },
+                            "Indestructible": false
+                        }
+                    ],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 5,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 5,
+                                "Y": 14
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 17,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 5,
+                                "Y": 22
+                            },
+                            "Size": {
+                                "X": 4,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 22,
+                                "Y": 4
+                            },
+                            "Destination": {
+                                "X": 48,
                                 "Y": 36
                             }
                         }
