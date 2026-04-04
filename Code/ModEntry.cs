@@ -232,13 +232,13 @@ namespace ultimatecoopnbarn
         private string OvercrowdingVPP()
         {
             if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
-                return "false";                
+                return "Base";                
             
             if (_vppDir == null)
                 InitVppWatcher();
 
             if (_vppDir == null)
-                return "false";
+                return "Base";
 
             if (_cachedEnabled == null)
             {
@@ -246,11 +246,11 @@ namespace ultimatecoopnbarn
                 {
                     string vppConfigPath = Path.Combine(_vppDir, "config.json");
                     if (!File.Exists(vppConfigPath))
-                        return "false";
+                        return "Base";
                 
                     using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
                     if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
-                        return "false";
+                        return "Base";
 
                     _cachedEnabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
                         || (prop.ValueKind == System.Text.Json.JsonValueKind.String
@@ -258,11 +258,11 @@ namespace ultimatecoopnbarn
                 }
                 catch
                 {
-                return "false";
+                return "Base";
                 }
             }
 
-            return _cachedEnabled == true ? "true" : "false";
+            return _cachedEnabled == true ? "VPP" : "Base";
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
