@@ -1,0 +1,32 @@
+var layer = tiled.activeAsset.currentLayer;
+var lines = ["X,Y,TileID"];
+for (var y = 0; y < layer.height; y++) {
+    for (var x = 0; x < layer.width; x++) {
+        var tile = layer.tileAt(x, y);
+        if (tile) {
+            var localId = tile.id - tile.tileset.firstgid;
+            lines.push(x + "," + y + "," + localId);
+        }
+    }
+}
+var file = new TextFile("/home/bobkalonger/StardewModding/COOP AND BARN FIXES/github/ultimatecoopnbarn/REF/Maps/barnDayNightVPP.csv", TextFile.WriteOnly);
+file.write(lines.join("\n"));
+file.commit();
+tiled.log("Done! Saved to /home/bobkalonger/StardewModding/COOP AND BARN FIXES/github/ultimatecoopnbarn/REF/Maps/barnDayNightVPP.csv");
+
+
+var layer = tiled.activeAsset.currentLayer;
+var lines = ["X,Y,TileID"];
+for (var y = 0; y < layer.height; y++) {
+    for (var x = 0; x < layer.width; x++) {
+        var tile = layer.tileAt(x, y);
+        if (tile) {
+            var localId = tile.id - tile.tileset.firstgid;
+            lines.push(x + "," + y + "," + localId);
+        }
+    }
+}
+var file = new TextFile("/home/bobkalonger/StardewModding/COOP AND BARN FIXES/github/ultimatecoopnbarn/REF/Maps/coopDayNightVPP.csv", TextFile.WriteOnly);
+file.write(lines.join("\n"));
+file.commit();
+tiled.log("Done! Saved to /home/bobkalonger/StardewModding/COOP AND BARN FIXES/github/ultimatecoopnbarn/REF/Maps/coopDayNightVPP.csv");
