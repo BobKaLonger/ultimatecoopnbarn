@@ -27,7 +27,7 @@
             "When": {
                 "HasMod": "KediDili.VanillaPlusProfessions",
                 "bobkalonger.UltCB_code/OvercrowdingConfigEnabled": "true",
-                "Query: KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding": "true"
+                "Esca.EMP/GameStateQuery: KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding": "true"
             }
         },
         {

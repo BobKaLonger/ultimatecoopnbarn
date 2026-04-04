@@ -45,6 +45,11 @@
 			"UniqueID": "KediDili.VanillaPlusProfessions",
 			"MinimumVersion": "1.1.1",
 			"IsRequired": false
+		},
+		{
+			"UniqueID": "Esca.EMP",
+			"MinimumVersion": "1.7.2",
+			"IsRequired": false
 		}
 	]
 }
