@@ -77,7 +77,11 @@ namespace ultimatecoopnbarn
             }
 
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
-            cp.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () => new[] { OvercrowdingVPP() });
+            cp.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () =>
+            {
+                var result = OvercrowdingVPP();
+                return result == null ? Array.Empty<string>() : new[] { result };
+            });
             
             _cp = cp;        
         }
@@ -210,7 +214,7 @@ namespace ultimatecoopnbarn
 
         private void InitVppWatcher()
         {
-            var vppInfo = Helper.ModRegistry.Get("KediDili.VanillaPlusProfessions");
+            var vppInfo = Helper.ModRegistry.Get("KediDili.VPPData.CP");
             _vppDir = vppInfo?.GetType()
                 .GetProperty("DirectoryPath",
                     System.Reflection.BindingFlags.Public |
@@ -231,11 +235,19 @@ namespace ultimatecoopnbarn
 
         private string OvercrowdingVPP()
         {
+            if (!Context.IsWorldReady)
+                return null;
+
             if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
-                return "false";                
+                {
+                    Monitor.Log("VPP not loaded", LogLevel.Debug);
+                    return "false";    
+                }               
             
             if (_vppDir == null)
                 InitVppWatcher();
+
+            Monitor.Log($"VPP dir: {_vppDir ?? "NULL"}", LogLevel.Debug);
 
             if (_vppDir == null)
                 return "false";
@@ -245,20 +257,31 @@ namespace ultimatecoopnbarn
                 try
                 {
                     string vppConfigPath = Path.Combine(_vppDir, "config.json");
+                    Monitor.Log($"Looking for config at: {vppConfigPath}", LogLevel.Debug);
+                    Monitor.Log($"File exists: {File.Exists(vppConfigPath)}", LogLevel.Debug);
+                    
                     if (!File.Exists(vppConfigPath))
                         return "false";
                 
                     using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
                     if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
+                    {
+                        Monitor.Log("EnableOvercrowdingEdits property not found!", LogLevel.Debug);
                         return "false";
+                    }
+
+                    Monitor.Log($"EnableOvercrowdingEdits kind: {prop.ValueKind}, value: {prop}", LogLevel.Debug);
 
                     _cachedEnabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
                         || (prop.ValueKind == System.Text.Json.JsonValueKind.String
                             && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
+
+                    Monitor.Log($"_cachedEnabled: {_cachedEnabled}", LogLevel.Debug);
                 }
-                catch
+                catch (Exception ex)
                 {
-                return "false";
+                    Monitor.Log($"Exception: {ex.Message}", LogLevel.Debug);
+                    return "false";
                 }
             }
 

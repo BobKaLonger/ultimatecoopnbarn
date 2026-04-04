@@ -25,9 +25,9 @@
             "Name": "modVPP",
             "Value": "VPP",
             "When": {
-                "HasMod": "KediDili.VanillaPlusProfessions, Esca.EMP",
-                "bobkalonger.UltCB_code/OvercrowdingConfigEnabled": "VPP",
-                "Esca.EMP/GameStateQuery: KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding": "true"
+                "HasMod": "KediDili.VanillaPlusProfessions,Esca.EMP",
+                "bobkalonger.UltCB_code/OvercrowdingConfigEnabled": "true",
+                "Esca.EMP/GameStateQuery: KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding": "True"
             }
         },
         {
