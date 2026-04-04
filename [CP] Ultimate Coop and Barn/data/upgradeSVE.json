@@ -4,7 +4,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "Base" 
+                "modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_UltimateBarn": {
@@ -185,7 +185,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "Base" 
+                "modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_UltimateCoop": {
@@ -392,7 +392,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "VPP" 
+                "modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_UltimateBarn": {
@@ -573,7 +573,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "VPP" 
+                "modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_UltimateCoop": {

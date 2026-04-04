@@ -4,7 +4,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "Base" 
+                "modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseBarn": {
@@ -243,7 +243,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "Base" 
+                "modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseCoop": {
@@ -457,7 +457,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "VPP" 
+                "modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseBarn": {
@@ -696,7 +696,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "HasValue:{{modVPP}}": "VPP" 
+                "modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseCoop": {
