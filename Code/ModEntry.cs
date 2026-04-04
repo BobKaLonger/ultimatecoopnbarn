@@ -49,15 +49,6 @@ namespace ultimatecoopnbarn
             var mi = Helper.ModRegistry.Get("bobkalonger.ultimatecoopnbarnCP");
             cpPack = mi.GetType().GetProperty("ContentPack")?.GetValue(mi) as IContentPack;
 
-            var api = Helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
-            if (api != null)
-            {
-                api.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () =>
-                {
-                    return new[] { OvercrowdingVPP() };
-                });
-            }
-
             Helper.Events.GameLoop.ReturnedToTitle += (s, e) =>
             {
                 _vppConfigWatcher?.Dispose();
@@ -86,7 +77,9 @@ namespace ultimatecoopnbarn
             }
 
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
-            _cp = cp;
+            cp.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () => new[] { OvercrowdingVPP() });
+            
+            _cp = cp;        
         }
         private IEnumerable<string> GetUltimateMode()
         {
