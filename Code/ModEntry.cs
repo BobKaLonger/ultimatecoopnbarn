@@ -358,14 +358,69 @@ namespace ultimatecoopnbarn
         {
             if (interior.map == null) return;
             
-            string[] excludedIds = { "(BC)99", "(O)178" };
+            var namedDestinations = new Dictionary<string, Vector2>
+            {
+                { "(BC)99",  new Vector2(26, 19) },
+                { "(BC)104", new Vector2(41, 19) },
+                { "(BC)165", new Vector2(36, 19) },
+                { "(BC)272", new Vector2(21, 19) }
+            };
+
+            var haySlots = new List<Microsoft.Xna.Framework.Rectangle>
+            {
+                new Microsoft.Xna.Framework.Rectangle(4,  29, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(4,  39, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(47, 29, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(47, 39, 12, 1)
+            };
+
+            Vector2 startCenter = new Vector2(
+                interior.map.Layers[0].LayerWidth / 2,
+                interior.map.Layers[0].LayerHeight / 2
+            );
+
+            var foundHay = SpiralSearch(interior, "(O)178", startCenter, maxRadius: 50);
+            int haySlotIndex = 0;
+            int haySlotX = haySlots[0].Left;
+
+            foreach (var (sourceTile, obj) in foundHay)
+            {
+                if (haySlotIndex >= haySlots.Count) break;
+
+                Vector2 dest = new Vector2(haySlotX, haySlots[haySlotIndex].Top);
+                interior.removeObject(sourceTile, false);
+                obj.TileLocation = dest;
+                interior.objects[dest] = obj;
+
+                haySlotX++;
+                if (haySlotX > haySlots[haySlotIndex].Right)
+                {
+                    haySlotIndex++;
+                    if (haySlotIndex < haySlots.Count)
+                        haySlotX = haySlots[haySlotIndex].Left;
+                }
+            }
+
+            var excludedIds = new HashSet<string>(namedDestinations.Keys) { "(O)178" };
+
+            foreach (var kvp in namedDestinations)
+            {
+                var found = SpiralSearch(interior, kvp.Key, startCenter, maxRadius: 50);
+                if (found.Count == 0) continue;
+
+                var (sourceTile, obj) = found[0];
+                interior.removeObject(sourceTile, false);
+                obj.TileLocation = kvp.Value;
+                interior.objects[kvp.Value] = obj;
+            }
+
+            var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 21, y: 21, width: 21, height: 24);
 
             var barnItemMoves = interior.objects.Pairs
                 .Where(p => !excludedIds.Contains(p.Value.QualifiedItemId))
                 .ToList();
                 
-            var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 21, y: 21, width: 21, height: 24);
-
+            
             foreach (var pair in barnItemMoves)
             {
                 Vector2 dest = LandingPadRect(interior, landingPad);
@@ -380,8 +435,50 @@ namespace ultimatecoopnbarn
         {
             if (interior.map == null) return;
 
-            string[] excludedIds = { "(BC)99", "(O)178" };
-            
+            var namedDestinations = new Dictionary<string, Vector2>
+            {
+                { "(BC)99",  new Vector2(38, 36) },
+                { "(BC)104", new Vector2(28, 6)  },
+                { "(BC)165", new Vector2(39, 36) },
+                { "(BC)272", new Vector2(29, 6)  }
+            };
+
+            var haySlots = new List<Microsoft.Xna.Framework.Rectangle>
+            {
+                new Microsoft.Xna.Framework.Rectangle(4,  14, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(4,  22, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(4,  30, 12, 1),
+                new Microsoft.Xna.Framework.Rectangle(4,  38, 12, 1)
+            };
+
+            Vector2 startCenter = new Vector2(
+                interior.map.Layers[0].LayerWidth / 2,
+                interior.map.Layers[0].LayerHeight / 2
+            );
+
+            var foundHay = SpiralSearch(interior, "(O)178", startCenter, maxRadius: 50);
+            int haySlotIndex = 0;
+            int haySlotX = haySlots[0].Left;
+
+            foreach (var (sourceTile, obj) in foundHay)
+            {
+                if (haySlotIndex >= haySlots.Count) break;
+
+                Vector2 dest = new Vector2(haySlotX, haySlots[haySlotIndex].Top);
+                interior.removeObject(sourceTile, false);
+                obj.TileLocation = dest;
+                interior.objects[dest] = obj;
+
+                haySlotX++;
+                if (haySlotX > haySlots[haySlotIndex].Right)
+                {
+                    haySlotIndex++;
+                    if (haySlotIndex < haySlots.Count)
+                        haySlotX = haySlots[haySlotIndex].Left;
+                }
+
+            }
+
             Vector2[] incubatorDestinations =
             {
                 new Vector2(2, 14),
@@ -389,14 +486,8 @@ namespace ultimatecoopnbarn
                 new Vector2(2, 30),
                 new Vector2(2, 38)
             };
-                    
-            Vector2 startCenter = new Vector2(
-                interior.map.Layers[0].LayerWidth / 2,
-                interior.map.Layers[0].LayerHeight / 2
-            );
 
-            var foundIncubators = SpiralSearch(interior, "(BC)101", startCenter, maxRadius: 50);
-                    
+            var foundIncubators = SpiralSearch(interior, "(BC)101", startCenter, maxRadius: 50);        
             for (int i = 0; i < foundIncubators.Count && i < incubatorDestinations.Length; i++)
             {
                 var (sourceTile, obj) = foundIncubators[i];
@@ -406,12 +497,24 @@ namespace ultimatecoopnbarn
                 interior.objects[dest] = obj;
             }
 
-            string[] coopExcluded = excludedIds.Append("(BC)101").ToArray();
-            var coopItemMoves = interior.objects.Pairs
-                .Where(p => !coopExcluded.Contains(p.Value.QualifiedItemId))
-                .ToList();
+            var excludedIds = new HashSet<string>(namedDestinations.Keys) { "(O)178", "(BC)101" };
+
+            foreach (var kvp in namedDestinations)
+            {
+                var found = SpiralSearch(interior, kvp.Key, startCenter, maxRadius: 50);
+                if (found.Count == 0) continue;
+
+                var (sourceTile, obj) = found[0];
+                interior.removeObject(sourceTile, false);
+                obj.TileLocation = kvp.Value;
+                interior.objects[kvp.Value] = obj;
+            }
 
             var landingPad = new Microsoft.Xna.Framework.Rectangle(x: 20, y: 7, width: 16, height: 36);
+
+            var coopItemMoves = interior.objects.Pairs
+                .Where(p => !excludedIds.Contains(p.Value.QualifiedItemId))
+                .ToList();
 
             foreach (var pair in coopItemMoves)
             {
@@ -422,6 +525,34 @@ namespace ultimatecoopnbarn
                 pair.Value.TileLocation = dest;
                 interior.objects[dest] = pair.Value;
             } 
+        }
+
+        [HarmonyPatch(typeof(Building), nameof(Building.FinishConstruction))]
+        public static class InstantBuildingConstructionPatch
+        {
+            public static void Postfix(Building __instance)
+            {
+                if (__instance.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
+                    return;
+
+                GameLocation interior = __instance.GetIndoors();
+                if (interior == null)
+                    return;
+
+                string upgradeKey = $"{modInstance.ModManifest.UniqueID}/buildingKey";
+                string currenetLevel = __instance.buildingType.Value;
+
+                __instance.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
+                if (lastMovedLevel == currenetLevel)
+                    return;
+
+                if (__instance.buildingType.Value is UltimateBarn or SuperDenseBarn or UltimatePremiumBarn)
+                    BarnItemMoves(interior);
+                else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
+                    CoopItemMoves(interior);
+
+                    __instance.modData[upgradeKey] = currenetLevel;
+            }
         }  
 
         [HarmonyPatch(typeof(Building), nameof(Building.GetData))]

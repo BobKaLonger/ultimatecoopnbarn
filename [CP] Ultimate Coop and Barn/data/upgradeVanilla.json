@@ -191,34 +191,7 @@
                             "Indestructible": false
                         }
                     ],
-                    "IndoorItemMoves": [
-                        {
-                            "Id": "Old_Hay",
-                            "Source": {
-                                "X": 8,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 4,
-                                "Y": 29
-                            },
-                            "Size": {
-                                "X": 12,
-                                "Y": 1
-                            }
-                        },
-                        {
-                            "Id": "Default_Feeder",
-                            "Source": {
-                                "X": 6,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 26,
-                                "Y": 19
-                            }
-                        }
-                    ],
+                    "IndoorItemMoves": [],
                     "CustomFields": null
                 }
             }
@@ -400,45 +373,7 @@
                             "Indestructible": false
                         }
                     ],
-                    "IndoorItemMoves": [
-                        {
-                            "Id": "Old_Hay",
-                            "Source": {
-                                "X": 6,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 4,
-                                "Y": 14
-                            },
-                            "Size": {
-                                "X": 12,
-                                "Y": 1
-                            }
-                        },
-                        {
-                            "Id": "Default_Feeder",
-                            "Source": {
-                                "X": 3,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 38,
-                                "Y": 36
-                            }
-                        },
-                        {
-                            "Id": "First_Incubator",
-                            "Source": {
-                                "X": 2,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 2,
-                                "Y": 14
-                            }
-                        }
-                    ],
+                    "IndoorItemMoves": [],
                     "CustomFields": null
                 }
             }
@@ -634,34 +569,7 @@
                             "Indestructible": false
                         }
                     ],
-                    "IndoorItemMoves": [
-                        {
-                            "Id": "Old_Hay",
-                            "Source": {
-                                "X": 8,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 5,
-                                "Y": 29
-                            },
-                            "Size": {
-                                "X": 12,
-                                "Y": 1
-                            }
-                        },
-                        {
-                            "Id": "Default_Feeder",
-                            "Source": {
-                                "X": 6,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 31,
-                                "Y": 19
-                            }
-                        }
-                    ],
+                    "IndoorItemMoves": [],
                     "CustomFields": null
                 }
             }
@@ -843,45 +751,7 @@
                             "Indestructible": false
                         }
                     ],
-                    "IndoorItemMoves": [
-                        {
-                            "Id": "Old_Hay",
-                            "Source": {
-                                "X": 6,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 5,
-                                "Y": 14
-                            },
-                            "Size": {
-                                "X": 12,
-                                "Y": 1
-                            }
-                        },
-                        {
-                            "Id": "Default_Feeder",
-                            "Source": {
-                                "X": 3,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 48,
-                                "Y": 36
-                            }
-                        },
-                        {
-                            "Id": "First_Incubator",
-                            "Source": {
-                                "X": 2,
-                                "Y": 3
-                            },
-                            "Destination": {
-                                "X": 2,
-                                "Y": 14
-                            }
-                        }
-                    ],
+                    "IndoorItemMoves": [],
                     "CustomFields": null
                 }
             }
