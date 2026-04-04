@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using StardewValley.GameData.Buildings;
 using System.Linq;
+using System.IO;
 
 namespace ultimatecoopnbarn
 {
@@ -47,6 +48,15 @@ namespace ultimatecoopnbarn
 
             var mi = Helper.ModRegistry.Get("bobkalonger.ultimatecoopnbarnCP");
             cpPack = mi.GetType().GetProperty("ContentPack")?.GetValue(mi) as IContentPack;
+
+            var api = Helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
+            if (api != null)
+            {
+                api.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () =>
+                {
+                    return new[] { OvercrowdingVPP() };
+                });
+            }
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Player.Warped += PlayerOnWarped;
@@ -193,6 +203,47 @@ namespace ultimatecoopnbarn
                 Game1.currentLightSources.Remove(key);
         }
 
+        private string OvercrowdingVPP()
+        {
+            if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
+                return "false";
+
+            var vppInfo = Helper.ModRegistry.Get("KediDili.VanillaPlusProfessions");
+            string vppDir = vppInfo?.GetType()
+                .GetProperty("DirectoryPath",
+                    System.Reflection.BindingFlags.Public |
+                    System.Reflection.BindingFlags.NonPublic |
+                    System.Reflection.BindingFlags.Instance)
+                ?.GetValue(vppInfo) as string;
+            
+            if (vppDir == null)
+                return "false";
+
+            try
+            {
+                string vppConfigPath = Path.Combine(vppDir, "config.json");
+                if (!File.Exists(vppConfigPath))
+                    return "false";
+                
+                using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
+                if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
+                    return "false";
+
+                bool enabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
+                            || (prop.ValueKind == System.Text.Json.JsonValueKind.String
+                                && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
+                
+                if (!enabled)
+                    return "false";
+            }
+            catch
+            {
+                return "false";
+            }
+
+            return "true";
+        }
+
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
             foreach (Building building in Game1.getFarm().buildings)
@@ -281,7 +332,6 @@ namespace ultimatecoopnbarn
             }
         }
             
-        
         private static void CoopItemMoves(GameLocation interior)
         {
             if (interior.map == null) return;
