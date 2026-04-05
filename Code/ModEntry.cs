@@ -10,22 +10,12 @@ using System;
 using System.Collections.Generic;
 using StardewValley.GameData.Buildings;
 using System.Linq;
-using System.IO;
 
 namespace ultimatecoopnbarn
 {
-    public interface IManagedTokenString
-    {
-        bool IsValid { get; }
-        string ValidationError { get; }
-        bool IsReady { get; }
-        string Value { get; }
-        IEnumerable<int> UpdateContext();
-    }
     public interface IContentPatcherAPI
     {
         bool IsConditionsApiReady { get; }
-        IManagedTokenString ParseTokenString(IManifest manifest, string rawValue, ISemanticVersion formatVersion, string[] assumeModIds = null);
         void RegisterToken(IManifest mod, string name, Func<IEnumerable<string>> getValue);
     }
     public class ModEntry : Mod
@@ -51,68 +41,16 @@ namespace ultimatecoopnbarn
 
             Helper.Events.GameLoop.ReturnedToTitle += (s, e) =>
             {
-                _vppConfigWatcher?.Dispose();
-                _vppConfigWatcher = null;
-                _vppDir = null;
-                _cachedEnabled = null;
-                _lastVppMode = null;
+                _cachedUpgradeConfig = null;
+                _lastMode = null;
             };
-
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-            helper.Events.Player.Warped += PlayerOnWarped;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
-            helper.Events.Content.AssetRequested += OnAssetRequested;
-            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
+            helper.Events.Player.Warped += PlayerOnWarped;
 
             var harmony = new Harmony(this.ModManifest.UniqueID);
 
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-        }
-
-        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
-        {
-            foreach (Building building in Game1.getFarm().buildings)
-            {
-                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
-                    continue;
-                
-                building.updateInteriorWarps(building.GetIndoors());
-                building.GetIndoors()?.reloadMap();
-            }
-        }
-
-        private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
-        {
-            if (!e.NameWithoutLocale.IsEquivalentTo("Data/Buildings"))
-                return;
-
-            e.Edit(asset =>
-            {
-                var data = asset.AsDictionary<string, BuildingData>().Data;
-
-                string floorBarn = GetBarnFloor();
-                string floorCoop = GetCoopFloor();
-                string vpp = Context.IsWorldReady && OvercrowdingVPP() == "true" ? "VPP" : "Base";
-
-                if (data.TryGetValue(UltimateBarn, out var barn))
-                    barn.IndoorMap = $"ultimate_{floorBarn}{vpp}_UltimateBarn";
-
-                if (data.TryGetValue(UltimateCoop, out var coop))
-                    coop.IndoorMap = $"ultimate_{floorCoop}{vpp}_UltimateCoop";
-
-            }, AssetEditPriority.Late);
-        }
-
-        private string GetBarnFloor()
-        {
-            var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
-            return config != null && config.TryGetValue("Barn Floor", out string v) ? v : "Clean";
-        }
-
-        private string GetCoopFloor()
-        {
-            var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
-            return config != null && config.TryGetValue("Coop Floor", out string v) ? v : "Clean";
         }
 
         ///<inheritdoc cref="IGameLoopEvents.GameLaunched"/>
@@ -125,23 +63,9 @@ namespace ultimatecoopnbarn
                 return;
             }
 
-            cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
-            
-            cp.RegisterToken(ModManifest, "modVPP", () =>
-            {
-                if (!Context.IsWorldReady) return Array.Empty<string>();
-
-                var value = OvercrowdingVPP() == "true" ? "VPP" : "Base";
-
-                if (value != _lastVppMode)
-                {
-                    _lastVppMode = value;
-                    Helper.GameContent.InvalidateCache("Data/Buildings");
-                }
-
-                return new[] { value };
-            });        
+            cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);       
         }
+
         private IEnumerable<string> GetUltimateMode()
         {
             if (!Context.IsWorldReady)
@@ -151,7 +75,6 @@ namespace ultimatecoopnbarn
             return new[] { ComputeUltimateMode() };
         }
         private string _lastMode;
-        private string _lastVppMode = null;
         private string _cachedUpgradeConfig = null;
         private string GetUpgradeConfig()
         {
@@ -267,87 +190,17 @@ namespace ultimatecoopnbarn
                 Game1.currentLightSources.Remove(key);
         }
 
-        private string _vppDir = null;
-        private bool? _cachedEnabled = null;
-        private FileSystemWatcher _vppConfigWatcher = null;
-
-        private void InitVppWatcher()
-        {
-            var vppInfo = Helper.ModRegistry.Get("KediDili.VPPData.CP");
-            _vppDir = vppInfo?.GetType()
-                .GetProperty("DirectoryPath",
-                    System.Reflection.BindingFlags.Public |
-                    System.Reflection.BindingFlags.NonPublic |
-                    System.Reflection.BindingFlags.Instance)
-                ?.GetValue(vppInfo) as string;
-
-            if (_vppDir == null) return;
-
-            _vppConfigWatcher = new FileSystemWatcher(_vppDir, "config.json")
-            {
-                NotifyFilter = NotifyFilters.LastWrite,
-                EnableRaisingEvents = true
-            };
-
-            _vppConfigWatcher.Changed += (s, e) => _cachedEnabled = null;
-        }
-
-        private string OvercrowdingVPP()
-        {
-            if (!Context.IsWorldReady)
-                return null;
-
-            if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
-                return "false";
-            
-            if (_vppDir == null)
-                InitVppWatcher();
-
-            if (_vppDir == null)
-                return "false";
-
-            if (_cachedEnabled == null)
-            {
-                try
-                {
-                    string vppConfigPath = Path.Combine(_vppDir, "config.json");                    
-                    if (!File.Exists(vppConfigPath))
-                        return "false";
-                
-                    using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
-                    if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
-                        return "false";
-
-                    _cachedEnabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
-                        || (prop.ValueKind == System.Text.Json.JsonValueKind.String
-                            && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
-                }
-                catch
-                {
-                    return "false";
-                }
-            }
-
-            if (_cachedEnabled != true)
-                return "false";
-            
-            bool hasTalent = GameStateQuery.CheckConditions(
-                "KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding",
-                Game1.currentLocation,
-                Game1.player
-            );
-
-            return hasTalent ? "true" : "false";
-        }
-
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
             foreach (Building building in Game1.getFarm().buildings)
             {
-                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop)) continue;
+                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
+                    continue;
+
+                var interior = building.GetIndoors();
+
                 if (building.daysUntilUpgrade.Value > 0) continue;
 
-                GameLocation interior = building.GetIndoors();
                 if (interior == null) continue;
 
                 string upgradeKey = $"{ModManifest.UniqueID}/buildingKey";
@@ -668,7 +521,7 @@ namespace ultimatecoopnbarn
                 else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
                     CoopItemMoves(interior);
 
-                    __instance.modData[upgradeKey] = currentLevel;
+                __instance.modData[upgradeKey] = currentLevel;
             }
         }  
 
