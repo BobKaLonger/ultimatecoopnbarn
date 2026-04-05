@@ -102,7 +102,6 @@ namespace ultimatecoopnbarn
             }
             return new[] { ComputeUltimateMode() };
         }
-        private IContentPatcherAPI _cp;
         private string _lastMode;
         private string _lastVppMode = null;
         private string _cachedUpgradeConfig = null;
