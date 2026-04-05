@@ -1,0 +1,451 @@
+{
+    "Changes": [
+        {
+            "Action": "EditData",
+            "Target": "Data/Buildings",
+            "Entries": {
+                "{{ModId}}_SuperDenseBarn": {
+                    "ID": "{{i18n:building.ultimate-barn.name}}",
+                    "Name": "{{i18n:building.ultimate-barn.name}}",
+                    "Description": "{{i18n:building.ultimate-barn.description}}",
+                    "Texture": "Buildings\\Deluxe Barn",
+                    "Skins": [],
+                    "DrawShadow": true,
+                    "MagicalConstruction": false,
+                    "Builder": "Robin",
+                    "Size": {
+                        "X": 7,
+                        "Y": 4
+                    },
+                    "SourceRect": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 112,
+                        "Height": 112
+                    },
+                    "DrawOffset": "0, 0",
+                    "SortTileOffset": 0.0,
+                    "CollisionMap": null,
+                    "AdditionalPlacementTiles": null,
+                    "BuildingType": null,
+                    "FadeWhenBehind": true,
+                    "BuildCondition": null,
+                    "BuildingToUpgrade": "jenf1.megacoopbarn_MegaBarn",
+                    "BuildDays": 3,
+                    "BuildCost": 200000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 900
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 450
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 30
+                        }
+                    ],
+                    "BuildMenuDrawOffset": {
+                        "X": 0,
+                        "Y": 0
+                    },
+                    "HumanDoor": {
+                        "X": 1,
+                        "Y": 3
+                    },
+                    "AnimalDoor": {
+                        "X": 4,
+                        "Y": 3,
+                        "Width": 2,
+                        "Height": 1
+                    },
+                    "AnimalDoorOpenDuration": 0.4,
+                    "AnimalDoorOpenSound": "doorCreak",
+                    "AnimalDoorCloseDuration": 0.6,
+                    "AnimalDoorCloseSound": "doorCreakReverse",
+                    "NonInstancedIndoorLocation": null,
+                    "DrawLayers": [
+                        {
+                            "Id": "Default_AnimalDoor_Bottom",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 0,
+                                "Y": 112,
+                                "Width": 32,
+                                "Height": 16
+                            },
+                            "DrawPosition": "64, 96",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 0.02,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": -19
+                            }
+                        },
+                        {
+                            "Id": "Default_AnimalDoor_Top",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 0,
+                                "Y": 112,
+                                "Width": 32,
+                                "Height": 12
+                            },
+                            "DrawPosition": "64, 84",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 0.02,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": -19
+                            }
+                        },
+                        {
+                            "Id": "Default_AnimalDoor_Open_Top",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 32,
+                                "Y": 112,
+                                "Width": 32,
+                                "Height": 16
+                            },
+                            "DrawPosition": "64, 80",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 1.0,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": 0
+                            }
+                        },
+                        {
+                            "Id": "Default_AnimalDoor_Open_Bottom",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 64,
+                                "Y": 112,
+                                "Width": 32,
+                                "Height": 16
+                            },
+                            "DrawPosition": "64, 96",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 1.0,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": 0
+                            }
+                        }
+                    ],
+                    "IndoorMap": "ultimate_{{Barn Floor}}_SuperDenseBarn",
+                    "IndoorMapType": "StardewValley.AnimalHouse",
+                    "MaxOccupants": 48,
+                    "ValidOccupantTypes": [
+                        "Barn"
+                    ],
+                    "AllowAnimalPregnancy": true,
+                    "IndoorItems": [
+                        {
+                            "Id": "Default_Heater",
+                            "ItemId": "(BC)104",
+                            "Tile": {
+                                "X": 41,
+                                "Y": 19
+                            },
+                            "Indestructible": false
+                        },
+					    {
+                            "Id": "Default_AutoPetter",
+                            "ItemId": "(BC)272",
+                            "Tile": {
+                                "X": 21,
+                                "Y": 19
+                            },
+                            "Indestructible": false
+                        },
+					    {
+                            "Id": "Default_AutoGrabber",
+                            "ItemId": "(BC)165",
+                            "Tile": {
+                                "X": 36,
+                                "Y": 19
+                            },
+                            "Indestructible": false
+                        }
+                    ],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 8,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 29
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 20,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 39
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 6,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 26,
+                                "Y": 19
+                            }
+                        }
+                    ],
+                    "CustomFields": null
+                }
+            }
+        },
+        
+        {
+            "Action": "EditData",
+            "Target": "Data/Buildings",
+            "Entries": {
+                "{{ModId}}_SuperDenseCoop": {
+                    "ID": "{{i18n:building.ultimate-coop.name}}",
+                    "Name": "{{i18n:building.ultimate-coop.name}}",
+                    "Description": "{{i18n:building.ultimate-coop.description}}",
+                    "Texture": "Buildings\\Deluxe Coop",
+                    "Skins": [],
+                    "DrawShadow": true,
+                    "MagicalConstruction": false,
+                    "Builder": "Robin",
+                    "Size": {
+                        "X": 6,
+                        "Y": 3
+                    },
+                    "SourceRect": {
+                        "X": 0,
+                        "Y": 0,
+                        "Width": 96,
+                        "Height": 112
+                    },
+                    "DrawOffset": "0, 0",
+                    "SortTileOffset": 0.0,
+                    "CollisionMap": null,
+                    "AdditionalPlacementTiles": null,
+                    "BuildingType": null,
+                    "FadeWhenBehind": true,
+                    "BuildCondition": null,
+                    "BuildingToUpgrade": "jenf1.megacoopbarn_MegaCoop",
+                    "BuildDays": 3,
+                    "BuildCost": 180000,
+                    "BuildMaterials": [
+                        {
+                            "ItemId": "(O)390",
+                            "Amount": 700
+                        },
+                        {
+                            "ItemId": "(O)709",
+                            "Amount": 300
+                        },
+                        {
+                            "ItemId": "(O)335",
+                            "Amount": 20
+                        }
+                    ],
+                    "BuildMenuDrawOffset": {
+                        "X": 0,
+                        "Y": 0
+                    },
+                    "HumanDoor": {
+                        "X": 1,
+                        "Y": 2
+                    },
+                    "AnimalDoor": {
+                        "X": 2,
+                        "Y": 2,
+                        "Width": 1,
+                        "Height": 1
+                    },
+                    "AnimalDoorOpenDuration": 0.3125,
+                    "AnimalDoorOpenSound": "doorCreak",
+                    "AnimalDoorCloseDuration": 0.3125,
+                    "AnimalDoorCloseSound": "doorCreakReverse",
+                    "NonInstancedIndoorLocation": null,
+                    "DrawLayers": [
+                        {
+                            "Id": "Default_AnimalDoor",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 0,
+                                "Y": 112,
+                                "Width": 16,
+                                "Height": 16
+                            },
+                            "DrawPosition": "32, 96",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 0.02,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": -13
+                            }
+                        },
+                        {
+                            "Id": "Default_AnimalDoor_Open",
+                            "Texture": null,
+                            "SourceRect": {
+                                "X": 16,
+                                "Y": 112,
+                                "Width": 16,
+                                "Height": 16
+                            },
+                            "DrawPosition": "32, 96",
+                            "DrawInBackground": false,
+                            "SortTileOffset": 1.0,
+                            "OnlyDrawIfChestHasContents": null,
+                            "FrameDuration": 90,
+                            "FrameCount": 1,
+                            "FramesPerRow": -1,
+                            "AnimalDoorOffset": {
+                                "X": 0,
+                                "Y": 0
+                            }
+                        }
+                    ],
+                    "IndoorMap": "ultimate_{{Coop Floor}}_SuperDenseCoop",
+                    "IndoorMapType": "StardewValley.AnimalHouse",
+                    "MaxOccupants": 48,
+                    "ValidOccupantTypes": [
+                        "Coop"
+                    ],
+                    "AllowAnimalPregnancy": false,
+                    "IndoorItems": [
+                        {
+                            "Id": "Default_Heater",
+                            "ItemId": "(BC)104",
+                            "Tile": {
+                                "X": 28,
+                                "Y": 6
+                            },
+                            "Indestructible": false
+                        },
+					    {
+                            "Id": "Default_AutoPetter",
+                            "ItemId": "(BC)272",
+                            "Tile": {
+                                "X": 29,
+                                "Y": 6
+                            },
+                            "Indestructible": false
+                        },
+					    {
+                            "Id": "Default_AutoGrabber",
+                            "ItemId": "(BC)165",
+                            "Tile": {
+                                "X": 39,
+                                "Y": 36
+                            },
+                            "Indestructible": false
+                        },
+                        {
+                            "Id": "Third_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 3,
+                                "Y": 41
+                            },
+                            "Indestructible": false
+                        },
+                        {
+                            "Id": "Fourth_Incubator",
+                            "ItemId": "(BC)101",
+                            "Tile": {
+                                "X": 4,
+                                "Y": 41
+                            },
+                            "Indestructible": false
+                        }
+                    ],
+                    "IndoorItemMoves": [
+                        {
+                            "Id": "Old_Hay1",
+                            "Source": {
+                                "X": 6,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 14
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Old_Hay2",
+                            "Source": {
+                                "X": 18,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 4,
+                                "Y": 22
+                            },
+                            "Size": {
+                                "X": 12,
+                                "Y": 1
+                            }
+                        },
+                        {
+                            "Id": "Default_Feeder",
+                            "Source": {
+                                "X": 3,
+                                "Y": 3
+                            },
+                            "Destination": {
+                                "X": 38,
+                                "Y": 36
+                            }
+                        }
+                    ],
+                    "CustomFields": null
+                }
+            }
+        }
+    ]
+}
