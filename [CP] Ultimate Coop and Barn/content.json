@@ -20,20 +20,7 @@
             "Section": "Upgrade Path"
         }
     },
-    "DynamicTokens": [
-        {
-            "Name": "modVPP",
-            "Value": "VPP",
-            "When": {
-                "HasMod": "KediDili.VanillaPlusProfessions",
-                "bobkalonger.UltCB_code/OvercrowdingConfigEnabled": "true"
-            }
-        },
-        {
-            "Name": "modVPP",
-            "Value": "Base"
-        }
-    ],
+	
 	"Changes": [
 		{
 			"Action": "Load",

@@ -77,10 +77,10 @@ namespace ultimatecoopnbarn
             }
 
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
-            cp.RegisterToken(ModManifest, "OvercrowdingConfigEnabled", () =>
+            cp.RegisterToken(ModManifest, "modVPP", () =>
             {
-                var result = OvercrowdingVPP();
-                return result == null ? Array.Empty<string>() : new[] { result };
+                if (!Context.IsWorldReady) return Array.Empty<string>();
+                return new[] { OvercrowdingVPP() == "true" ? "VPP" : "Base" };
             });
             
             _cp = cp;        

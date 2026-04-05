@@ -4,7 +4,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "modVPP": "Base" 
+                "bobkalonger.UltCB_code/modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseBarn": {
@@ -155,7 +155,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_{{Barn Floor}}{{modVPP}}_SuperDenseBarn",
+                    "IndoorMap": "ultimate_{{Barn Floor}}{{bobkalonger.UltCB_code/modVPP}}_SuperDenseBarn",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
@@ -172,7 +172,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "modVPP": "Base" 
+                "bobkalonger.UltCB_code/modVPP": "Base" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseCoop": {
@@ -281,7 +281,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_{{Coop Floor}}{{modVPP}}_SuperDenseCoop",
+                    "IndoorMap": "ultimate_{{Coop Floor}}{{bobkalonger.UltCB_code/modVPP}}_SuperDenseCoop",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
@@ -298,7 +298,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "modVPP": "VPP" 
+                "bobkalonger.UltCB_code/modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseBarn": {
@@ -449,7 +449,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_{{Barn Floor}}{{modVPP}}_SuperDenseBarn",
+                    "IndoorMap": "ultimate_{{Barn Floor}}{{bobkalonger.UltCB_code/modVPP}}_SuperDenseBarn",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 64,
                     "ValidOccupantTypes": [
@@ -466,7 +466,7 @@
             "Action": "EditData",
             "Target": "Data/Buildings",
             "When": {
-                "modVPP": "VPP" 
+                "bobkalonger.UltCB_code/modVPP": "VPP" 
             },
             "Entries": {
                 "{{ModId}}_SuperDenseCoop": {
@@ -575,7 +575,7 @@
                             }
                         }
                     ],
-                    "IndoorMap": "ultimate_{{Coop Floor}}{{modVPP}}_SuperDenseCoop",
+                    "IndoorMap": "ultimate_{{Coop Floor}}{{bobkalonger.UltCB_code/modVPP}}_SuperDenseCoop",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 64,
                     "ValidOccupantTypes": [
