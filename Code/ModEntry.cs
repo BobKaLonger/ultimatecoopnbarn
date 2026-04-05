@@ -240,14 +240,11 @@ namespace ultimatecoopnbarn
 
             if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
                 {
-                    Monitor.Log("VPP not loaded", LogLevel.Debug);
                     return "false";    
                 }               
             
             if (_vppDir == null)
                 InitVppWatcher();
-
-            Monitor.Log($"VPP dir: {_vppDir ?? "NULL"}", LogLevel.Debug);
 
             if (_vppDir == null)
                 return "false";
@@ -256,36 +253,34 @@ namespace ultimatecoopnbarn
             {
                 try
                 {
-                    string vppConfigPath = Path.Combine(_vppDir, "config.json");
-                    Monitor.Log($"Looking for config at: {vppConfigPath}", LogLevel.Debug);
-                    Monitor.Log($"File exists: {File.Exists(vppConfigPath)}", LogLevel.Debug);
-                    
+                    string vppConfigPath = Path.Combine(_vppDir, "config.json");                    
                     if (!File.Exists(vppConfigPath))
                         return "false";
                 
                     using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(vppConfigPath));
                     if (!doc.RootElement.TryGetProperty("EnableOvercrowdingEdits", out var prop))
-                    {
-                        Monitor.Log("EnableOvercrowdingEdits property not found!", LogLevel.Debug);
                         return "false";
-                    }
-
-                    Monitor.Log($"EnableOvercrowdingEdits kind: {prop.ValueKind}, value: {prop}", LogLevel.Debug);
 
                     _cachedEnabled = prop.ValueKind == System.Text.Json.JsonValueKind.True
                         || (prop.ValueKind == System.Text.Json.JsonValueKind.String
                             && prop.GetString()?.Equals("true", StringComparison.OrdinalIgnoreCase) == true);
-
-                    Monitor.Log($"_cachedEnabled: {_cachedEnabled}", LogLevel.Debug);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Monitor.Log($"Exception: {ex.Message}", LogLevel.Debug);
                     return "false";
                 }
             }
 
-            return _cachedEnabled == true ? "true" : "false";
+            if (_cachedEnabled != true)
+                return "false";
+            
+            bool hasTalent = GameStateQuery.CheckConditions(
+                "KediDili.VanillaPlusProfessions_PlayerHasTalent Any Overcrowding",
+                Game1.currentLocation,
+                Game1.player
+            );
+
+            return hasTalent ? "true" : "false";
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
