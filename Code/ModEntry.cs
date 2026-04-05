@@ -55,6 +55,7 @@ namespace ultimatecoopnbarn
                 _vppConfigWatcher = null;
                 _vppDir = null;
                 _cachedEnabled = null;
+                _lastVppMode = null;
             };
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
@@ -77,13 +78,21 @@ namespace ultimatecoopnbarn
             }
 
             cp.RegisterToken(ModManifest, "UltimateMode", GetUltimateMode);
+            
             cp.RegisterToken(ModManifest, "modVPP", () =>
             {
                 if (!Context.IsWorldReady) return Array.Empty<string>();
-                return new[] { OvercrowdingVPP() == "true" ? "VPP" : "Base" };
-            });
-            
-            _cp = cp;        
+
+                var value = OvercrowdingVPP() == "true" ? "VPP" : "Base";
+
+                if (value != _lastVppMode)
+                {
+                    _lastVppMode = value;
+                    Helper.GameContent.InvalidateCache("Data/Buildings");
+                }
+
+                return new[] { value };
+            });        
         }
         private IEnumerable<string> GetUltimateMode()
         {
@@ -95,12 +104,15 @@ namespace ultimatecoopnbarn
         }
         private IContentPatcherAPI _cp;
         private string _lastMode;
+        private string _lastVppMode = null;
+        private string _cachedUpgradeConfig = null;
         private string GetUpgradeConfig()
         {
+            if (_cachedUpgradeConfig != null) return _cachedUpgradeConfig;
             var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
             if (config != null && config.TryGetValue("Ultimate Building Upgrade", out string value))
-                return value;
-            return "Auto";
+                _cachedUpgradeConfig = value;
+            return _cachedUpgradeConfig ?? "Auto";
         }
         private string ComputeUltimateMode()
         {
@@ -239,9 +251,7 @@ namespace ultimatecoopnbarn
                 return null;
 
             if (!Helper.ModRegistry.IsLoaded("KediDili.VanillaPlusProfessions"))
-                {
-                    return "false";    
-                }               
+                return "false";
             
             if (_vppDir == null)
                 InitVppWatcher();
@@ -600,10 +610,10 @@ namespace ultimatecoopnbarn
                     return;
 
                 string upgradeKey = $"{modInstance.ModManifest.UniqueID}/buildingKey";
-                string currenetLevel = __instance.buildingType.Value;
+                string currentLevel = __instance.buildingType.Value;
 
                 __instance.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
-                if (lastMovedLevel == currenetLevel)
+                if (lastMovedLevel == currentLevel)
                     return;
 
                 if (__instance.buildingType.Value is UltimateBarn or SuperDenseBarn or UltimatePremiumBarn)
@@ -611,7 +621,7 @@ namespace ultimatecoopnbarn
                 else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
                     CoopItemMoves(interior);
 
-                    __instance.modData[upgradeKey] = currenetLevel;
+                    __instance.modData[upgradeKey] = currentLevel;
             }
         }  
 
