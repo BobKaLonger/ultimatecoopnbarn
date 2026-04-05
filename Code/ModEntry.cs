@@ -62,10 +62,23 @@ namespace ultimatecoopnbarn
             helper.Events.Player.Warped += PlayerOnWarped;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
             helper.Events.Content.AssetRequested += OnAssetRequested;
+            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
 
             var harmony = new Harmony(this.ModManifest.UniqueID);
 
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            foreach (Building building in Game1.getFarm().buildings)
+            {
+                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
+                    continue;
+                
+                building.updateInteriorWarps(building.GetIndoors());
+                building.GetIndoors()?.reloadMap();
+            }
         }
 
         private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
