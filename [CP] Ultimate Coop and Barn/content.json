@@ -135,7 +135,8 @@
             "FromFile": "data/upgradeSVE.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "SVE"
+                "bobkalonger.UltCB_code/UltimateMode": "SVE",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         },
         {
@@ -143,7 +144,8 @@
             "FromFile": "data/upgradeGiga.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Giga"
+                "bobkalonger.UltCB_code/UltimateMode": "Giga",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         },
         {
@@ -151,7 +153,8 @@
             "FromFile": "data/upgradeBoth.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Both"
+                "bobkalonger.UltCB_code/UltimateMode": "Both",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         },
         {
@@ -159,7 +162,8 @@
             "FromFile": "data/upgradeMega.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Mega"
+                "bobkalonger.UltCB_code/UltimateMode": "Mega",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         },
         {
@@ -167,7 +171,8 @@
             "FromFile": "data/upgradeGiant.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Giant"
+                "bobkalonger.UltCB_code/UltimateMode": "Giant",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         },
         {
@@ -175,7 +180,8 @@
             "FromFile": "data/upgradeVanilla.json",
             "When":
             {
-                "bobkalonger.UltCB_code/UltimateMode": "Vanilla"
+                "bobkalonger.UltCB_code/UltimateMode": "Vanilla",
+        		"HasMod": "bobkalonger.UltCB_code"
             }
         }
     ]
