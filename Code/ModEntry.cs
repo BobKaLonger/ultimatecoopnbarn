@@ -366,6 +366,8 @@ namespace ultimatecoopnbarn
                 { "(BC)272", new Vector2(21, 19) }
             };
 
+            var spawnIfMissing = new HashSet<string> { "(BC)104", "(BC)165", "(BC)272" };
+
             var haySlots = new List<Microsoft.Xna.Framework.Rectangle>
             {
                 new Microsoft.Xna.Framework.Rectangle(4,  29, 12, 1),
@@ -406,7 +408,27 @@ namespace ultimatecoopnbarn
             foreach (var kvp in namedDestinations)
             {
                 var found = SpiralSearch(interior, kvp.Key, startCenter, maxRadius: 50);
-                if (found.Count == 0) continue;
+
+                if (found.Count == 0)
+                {
+                    if (spawnIfMissing.Contains(kvp.Key))
+                    {
+                        if (interior.objects.TryGetValue(kvp.Value, out StardewValley.Object blocking))
+                        {
+                            interior.objects.Remove(kvp.Value);
+                            Game1.player.team.returnedDonations.Add(blocking);
+                            Game1.player.team.newLostAndFoundItems.Value = true;
+                        }
+
+                        var newObj = ItemRegistry.Create(kvp.Key) as StardewValley.Object;
+                        if (newObj != null)
+                        {
+                            newObj.TileLocation = kvp.Value;
+                            interior.objects[kvp.Value] = newObj;
+                        }
+                    }
+                    continue;
+                }
 
                 var (sourceTile, obj) = found[0];
                 interior.removeObject(sourceTile, false);
@@ -442,6 +464,8 @@ namespace ultimatecoopnbarn
                 { "(BC)165", new Vector2(39, 36) },
                 { "(BC)272", new Vector2(29, 6)  }
             };
+
+            var spawnIfMissing = new HashSet<string> { "(BC)104", "(BC)165", "(BC)272" };
 
             var haySlots = new List<Microsoft.Xna.Framework.Rectangle>
             {
@@ -487,7 +511,8 @@ namespace ultimatecoopnbarn
                 new Vector2(2, 38)
             };
 
-            var foundIncubators = SpiralSearch(interior, "(BC)101", startCenter, maxRadius: 50);        
+            var foundIncubators = SpiralSearch(interior, "(BC)101", startCenter, maxRadius: 50);
+
             for (int i = 0; i < foundIncubators.Count && i < incubatorDestinations.Length; i++)
             {
                 var (sourceTile, obj) = foundIncubators[i];
@@ -497,12 +522,52 @@ namespace ultimatecoopnbarn
                 interior.objects[dest] = obj;
             }
 
+            for (int i = foundIncubators.Count; i < incubatorDestinations.Length; i++)
+            {
+                Vector2 dest = incubatorDestinations[i];
+
+                if (interior.objects.TryGetValue(dest, out StardewValley.Object blocking))
+                {
+                    interior.objects.Remove(dest);
+                    Game1.player.team.returnedDonations.Add(blocking);
+                    Game1.player.team.newLostAndFoundItems.Value = true;
+
+                }
+
+                var newIncubator = ItemRegistry.Create("(BC)101") as StardewValley.Object;
+                if (newIncubator != null)
+                {
+                    newIncubator.TileLocation = dest;
+                    interior.objects[dest] = newIncubator;
+                }
+            }
+
             var excludedIds = new HashSet<string>(namedDestinations.Keys) { "(O)178", "(BC)101" };
 
             foreach (var kvp in namedDestinations)
             {
                 var found = SpiralSearch(interior, kvp.Key, startCenter, maxRadius: 50);
-                if (found.Count == 0) continue;
+
+                if (found.Count == 0)
+                {
+                    if (spawnIfMissing.Contains(kvp.Key))
+                    {
+                        if (interior.objects.TryGetValue(kvp.Value, out StardewValley.Object blocking))
+                        {
+                            interior.objects.Remove(kvp.Value);
+                            Game1.player.team.returnedDonations.Add(blocking);
+                            Game1.player.team.newLostAndFoundItems.Value = true;
+                        }
+
+                        var newObj = ItemRegistry.Create(kvp.Key) as StardewValley.Object;
+                        if (newObj != null)
+                        {
+                            newObj.TileLocation = kvp.Value;
+                            interior.objects[kvp.Value] = newObj;
+                        }
+                    }
+                    continue;
+                }
 
                 var (sourceTile, obj) = found[0];
                 interior.removeObject(sourceTile, false);

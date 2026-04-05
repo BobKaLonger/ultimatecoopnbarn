@@ -270,35 +270,7 @@
                     "ValidOccupantTypes": [
                         "Coop"
                     ],
-                    "IndoorItems": [
-                        {
-                            "Id": "Second_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 2,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Third_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 3,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Fourth_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 4,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }
@@ -574,35 +546,7 @@
                     "ValidOccupantTypes": [
                         "Coop"
                     ],
-                    "IndoorItems": [
-                        {
-                            "Id": "Second_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 2,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Third_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 3,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Fourth_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 4,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }

@@ -162,35 +162,7 @@
                         "Barn"
                     ],
                     "AllowAnimalPregnancy": true,
-                    "IndoorItems": [
-                        {
-                            "Id": "Default_Heater",
-                            "ItemId": "(BC)104",
-                            "Tile": {
-                                "X": 41,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoPetter",
-                            "ItemId": "(BC)272",
-                            "Tile": {
-                                "X": 21,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoGrabber",
-                            "ItemId": "(BC)165",
-                            "Tile": {
-                                "X": 36,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }
@@ -316,53 +288,7 @@
                         "Coop"
                     ],
                     "AllowAnimalPregnancy": false,
-                    "IndoorItems": [
-                        {
-                            "Id": "Default_Heater",
-                            "ItemId": "(BC)104",
-                            "Tile": {
-                                "X": 28,
-                                "Y": 6
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoPetter",
-                            "ItemId": "(BC)272",
-                            "Tile": {
-                                "X": 29,
-                                "Y": 6
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoGrabber",
-                            "ItemId": "(BC)165",
-                            "Tile": {
-                                "X": 39,
-                                "Y": 36
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Third_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 3,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Fourth_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 4,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }
@@ -530,35 +456,7 @@
                         "Barn"
                     ],
                     "AllowAnimalPregnancy": true,
-                    "IndoorItems": [
-                        {
-                            "Id": "Default_Heater",
-                            "ItemId": "(BC)104",
-                            "Tile": {
-                                "X": 46,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoPetter",
-                            "ItemId": "(BC)272",
-                            "Tile": {
-                                "X": 26,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoGrabber",
-                            "ItemId": "(BC)165",
-                            "Tile": {
-                                "X": 41,
-                                "Y": 19
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }
@@ -684,53 +582,7 @@
                         "Coop"
                     ],
                     "AllowAnimalPregnancy": false,
-                    "IndoorItems": [
-                        {
-                            "Id": "Default_Heater",
-                            "ItemId": "(BC)104",
-                            "Tile": {
-                                "X": 33,
-                                "Y": 6
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoPetter",
-                            "ItemId": "(BC)272",
-                            "Tile": {
-                                "X": 34,
-                                "Y": 6
-                            },
-                            "Indestructible": false
-                        },
-					    {
-                            "Id": "Default_AutoGrabber",
-                            "ItemId": "(BC)165",
-                            "Tile": {
-                                "X": 49,
-                                "Y": 36
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Third_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 3,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        },
-                        {
-                            "Id": "Fourth_Incubator",
-                            "ItemId": "(BC)101",
-                            "Tile": {
-                                "X": 4,
-                                "Y": 41
-                            },
-                            "Indestructible": false
-                        }
-                    ],
+                    "IndoorItems": [],
                     "IndoorItemMoves": [],
                     "CustomFields": null
                 }
