@@ -61,10 +61,45 @@ namespace ultimatecoopnbarn
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.Player.Warped += PlayerOnWarped;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
+            helper.Events.Content.AssetRequested += OnAssetRequested;
 
             var harmony = new Harmony(this.ModManifest.UniqueID);
 
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
+        {
+            if (!e.NameWithoutLocale.IsEquivalentTo("Data/Buildings"))
+                return;
+
+            e.Edit(asset =>
+            {
+                var data = asset.AsDictionary<string, BuildingData>().Data;
+
+                string floorBarn = GetBarnFloor();
+                string floorCoop = GetCoopFloor();
+                string vpp = Context.IsWorldReady && OvercrowdingVPP() == "true" ? "VPP" : "Base";
+
+                if (data.TryGetValue(UltimateBarn, out var barn))
+                    barn.IndoorMap = $"ultimate_{floorBarn}{vpp}_UltimateBarn";
+
+                if (data.TryGetValue(UltimateCoop, out var coop))
+                    coop.IndoorMap = $"ultimate_{floorCoop}{vpp}_UltimateCoop";
+
+            }, AssetEditPriority.Late);
+        }
+
+        private string GetBarnFloor()
+        {
+            var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
+            return config != null && config.TryGetValue("Barn Floor", out string v) ? v : "Clean";
+        }
+
+        private string GetCoopFloor()
+        {
+            var config = cpPack?.ReadJsonFile<Dictionary<string, string>>("config.json");
+            return config != null && config.TryGetValue("Coop Floor", out string v) ? v : "Clean";
         }
 
         ///<inheritdoc cref="IGameLoopEvents.GameLaunched"/>
