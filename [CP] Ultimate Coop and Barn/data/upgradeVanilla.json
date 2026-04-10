@@ -152,6 +152,7 @@
                             }
                         }
                     ],
+                    "IndoorMap": "ultimate_{{Barn Floor}}_SuperDenseBarn",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
@@ -275,6 +276,7 @@
                             }
                         }
                     ],
+                    "IndoorMap": "ultimate_{{Coop Floor}}_SuperDenseCoop",
                     "IndoorMapType": "StardewValley.AnimalHouse",
                     "MaxOccupants": 48,
                     "ValidOccupantTypes": [
