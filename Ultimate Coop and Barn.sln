@@ -2,7 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimateCoopAndBarn", "Code\UltimateCoopAndBarn.csproj", "{1D15267F-9B67-B52F-7670-B34AE4BEC497}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{314C6247-30EA-3492-19B6-DF847E3B326F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltimateCoopAndBarn", "Code\UltimateCoopAndBarn.csproj", "{9011E657-96B2-3EA4-95DD-59C407B21480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +12,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1D15267F-9B67-B52F-7670-B34AE4BEC497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D15267F-9B67-B52F-7670-B34AE4BEC497}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D15267F-9B67-B52F-7670-B34AE4BEC497}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D15267F-9B67-B52F-7670-B34AE4BEC497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9011E657-96B2-3EA4-95DD-59C407B21480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9011E657-96B2-3EA4-95DD-59C407B21480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9011E657-96B2-3EA4-95DD-59C407B21480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9011E657-96B2-3EA4-95DD-59C407B21480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9011E657-96B2-3EA4-95DD-59C407B21480} = {314C6247-30EA-3492-19B6-DF847E3B326F}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DFEDCF35-0802-4269-A6B1-EB7DD527913D}
+		SolutionGuid = {F294860B-0E27-4119-AFBA-13C4D0E3E096}
 	EndGlobalSection
 EndGlobal
