@@ -28,8 +28,8 @@ namespace ultimatecoopnbarn
         internal const string UltimateCoop = $"{UltimateCP}UltimateCoop";
         internal const string SuperDenseBarn = $"{UltimateCP}SuperDenseBarn";
         internal const string SuperDenseCoop = $"{UltimateCP}SuperDenseCoop";
-        private const string UltimatePremiumCoop = $"{SVExpandCP}PremiumCoop";
-        private const string UltimatePremiumBarn = $"{SVExpandCP}PremiumBarn";
+        internal const string UltimatePremiumCoop = $"{SVExpandCP}PremiumCoop";
+        internal const string UltimatePremiumBarn = $"{SVExpandCP}PremiumBarn";
         public override void Entry(IModHelper helper)
         {
             modInstance = this;
@@ -506,45 +506,41 @@ namespace ultimatecoopnbarn
                 if (__instance.Name != "Robin") return;
 
                 Building building = null;
-                GameLocation buildingLocation = null;
 
                 foreach (var location in Game1.locations)
                 {
-                    foreach (var b in location.buildings)
-                    {
-                        if (b.daysUntilUpgrade.Value > 0 &&
+                    building = location.buildings.FirstOrDefault(b =>
+                            b.daysUntilUpgrade.Value > 0 &&
                             (b.upgradeName.Value == UltimateBarn || b.upgradeName.Value == UltimateCoop ||
-                             b.upgradeName.Value == SuperDenseBarn || b.upgradeName.Value == SuperDenseCoop))
-                        {
-                            building = b;
-                            buildingLocation = location;
-                            break;
-                        }
-                    }
+                             b.upgradeName.Value == SuperDenseBarn || b.upgradeName.Value == SuperDenseCoop));
                     if (building != null) break;
                 }
 
                 if (building == null) return;
 
                 GameLocation indoors = building.GetIndoors();
+                if (building.daysUntilUpgrade.Value <= 0 || indoors == null) return;
 
-                if (indoors != null)
+                __instance.currentLocation?.characters.Remove(__instance);
+                __instance.currentLocation = indoors;
+                if (!indoors.characters.Contains(__instance))
+                    indoors.addCharacter(__instance);
+
+                switch (building.buildingType.Value)
                 {
-                    __instance.currentLocation?.characters.Remove(__instance);
-                    __instance.currentLocation = indoors;
-                    if (!indoors.characters.Contains(__instance))
-                        indoors.addCharacter(__instance);
-                    __instance.setTilePosition(1, 5);
-                }
-                else
-                {
-                    Game1.warpCharacter(__instance, buildingLocation.NameOrUniqueName,
-                        new Vector2(building.tileX.Value + building.tilesWide.Value / 2,
-                                    building.tileY.Value + building.tilesHigh.Value / 2));
+                    case UltimatePremiumBarn:
+                        __instance.setTilePosition(2, 6);
+                        break;
+                    case UltimatePremiumCoop:
+                        __instance.setTilePosition(27, 8);
+                        __instance.flip = true;
+                        break;
+                    default:
+                        __instance.setTilePosition(1, 5);
+                        break;
                 }
 
-                Traverse.Create(__instance).Field("isPlayingRobinHammerAnimation").SetValue(false);
-                Traverse.Create(__instance).Field("shouldPlayRobinHammerAnimation").Field("Value").SetValue(true);
+                __instance.ignoreScheduleToday = true;
             }
         }
 
