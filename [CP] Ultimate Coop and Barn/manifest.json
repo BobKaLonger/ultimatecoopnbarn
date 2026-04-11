@@ -3,7 +3,7 @@
 	"Author": "bobkalonger",
 	"Version": "1.7.1",
 	"Description": "Adds a new upgrade level to coops and barns, increasing the animal limit to 48!",
-	"UniqueID": "bobkalonger.ultimatecoopnbarnCP",
+	"UniqueID": "bobkalonger.UltimateCoopAndBarnCP",
 	"MinimumApiVersion": "4.4.0",
 	"UpdateKeys": [ "Nexus:44285" ],
 	"ContentPackFor": {
@@ -24,6 +24,11 @@
 		{
 			"UniqueID": "FlashShifter.StardewValleyExpandedCP",
 			"MinimumVersion": "1.15.10",
+			"IsRequired": false
+		},
+		{
+			"UniqueID": "JennaJuffuffles.BiggerOnTheInside",
+			"MinimumVersion": "1.0.0",
 			"IsRequired": false
 		},
 		{

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using StardewValley.GameData.Buildings;
 using System.Linq;
 
-namespace ultimatecoopnbarn
+namespace UltimateCoopAndBarn
 {
     public interface IContentPatcherAPI
     {

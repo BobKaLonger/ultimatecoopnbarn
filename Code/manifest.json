@@ -4,7 +4,7 @@
     "Version": "1.7.1",
     "Description": "Code for Ultimate Coop and Barn",
     "UniqueID": "bobkalonger.UltCB_code",
-    "EntryDll": "ultimatecoopnbarn.dll",
+    "EntryDll": "UltimateCoopAndBarn.dll",
     "MinimumApiVersion": "4.4.0",
     "UpdateKeys": [ "Nexus:-1" ],
     "Dependencies": [
