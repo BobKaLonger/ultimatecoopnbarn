@@ -137,7 +137,12 @@ namespace ultimatecoopnbarn
 
         private string ComputeAuto(bool hasJMCB, bool hasUARC)
         {
-            if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP")) return "SVE";
+            if (Helper.ModRegistry.IsLoaded("FlashShifter.StardewValleyExpandedCP"))
+            {
+                if (Helper.ModRegistry.IsLoaded("JennaJuffuffles.BiggerOnTheInside.CP")) return "BOTI";
+                return "SVE";
+            }
+            ;
             if (Helper.ModRegistry.IsLoaded("bobkalonger.gigacoopnbarn")) return "Giga";
             if (hasJMCB && hasUARC) return "Both";
             if (hasJMCB) return "Mega";
@@ -194,7 +199,7 @@ namespace ultimatecoopnbarn
         {
             foreach (Building building in Game1.getFarm().buildings)
             {
-                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
+                if (building.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop))
                     continue;
 
                 var interior = building.GetIndoors();
@@ -209,9 +214,9 @@ namespace ultimatecoopnbarn
                 building.modData.TryGetValue(upgradeKey, out string lastMovedLevel);
                 if (lastMovedLevel == currentLevel) continue;
 
-                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn or UltimatePremiumBarn)
+                if (building.buildingType.Value is UltimateBarn or SuperDenseBarn)
                     BarnItemMoves(interior);
-                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
+                else if (building.buildingType.Value is UltimateCoop or SuperDenseCoop)
                     CoopItemMoves(interior);
 
                 building.modData[upgradeKey] = currentLevel;
@@ -549,7 +554,7 @@ namespace ultimatecoopnbarn
         {
             public static void Postfix(Building __instance)
             {
-                if (__instance.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop or UltimatePremiumBarn or UltimatePremiumCoop))
+                if (__instance.buildingType.Value is not (UltimateBarn or UltimateCoop or SuperDenseBarn or SuperDenseCoop))
                     return;
 
                 GameLocation interior = __instance.GetIndoors();
@@ -563,9 +568,9 @@ namespace ultimatecoopnbarn
                 if (lastMovedLevel == currentLevel)
                     return;
 
-                if (__instance.buildingType.Value is UltimateBarn or SuperDenseBarn or UltimatePremiumBarn)
+                if (__instance.buildingType.Value is UltimateBarn or SuperDenseBarn)
                     BarnItemMoves(interior);
-                else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop or UltimatePremiumCoop)
+                else if (__instance.buildingType.Value is UltimateCoop or SuperDenseCoop)
                     CoopItemMoves(interior);
 
                 __instance.modData[upgradeKey] = currentLevel;

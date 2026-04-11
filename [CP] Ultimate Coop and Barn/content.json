@@ -101,6 +101,15 @@
         },
         {
             "Action": "Include",
+            "FromFile": "data/upgradeBOTI.json",
+            "When":
+            {
+                "bobkalonger.UltCB_code/UltimateMode": "BOTI",
+        		"HasMod": "bobkalonger.UltCB_code"
+            }
+        },
+        {
+            "Action": "Include",
             "FromFile": "data/upgradeGiga.json",
             "When":
             {
