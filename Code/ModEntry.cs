@@ -305,7 +305,7 @@ namespace ultimatecoopnbarn
                 interior.objects[dest] = obj;
 
                 haySlotX++;
-                if (haySlotX > haySlots[haySlotIndex].Right)
+                if (haySlotX >= haySlots[haySlotIndex].Right)
                 {
                     haySlotIndex++;
                     if (haySlotIndex < haySlots.Count)
@@ -361,6 +361,13 @@ namespace ultimatecoopnbarn
                 pair.Value.TileLocation = dest;
                 interior.objects[dest] = pair.Value;
             }
+
+            Vector2 correctFeederTile = namedDestinations["(BC)99"];
+            var extraFeeders = SpiralSearch(interior, "(BC)99", startCenter, maxRadius: 50)
+                .Where(f => f.tile != correctFeederTile)
+                .ToList();
+            foreach (var (tile, _) in extraFeeders)
+                interior.removeObject(tile, false);
         }
             
         private static void CoopItemMoves(GameLocation interior)
@@ -404,7 +411,7 @@ namespace ultimatecoopnbarn
                 interior.objects[dest] = obj;
 
                 haySlotX++;
-                if (haySlotX > haySlots[haySlotIndex].Right)
+                if (haySlotX >= haySlots[haySlotIndex].Right)
                 {
                     haySlotIndex++;
                     if (haySlotIndex < haySlots.Count)
@@ -499,7 +506,14 @@ namespace ultimatecoopnbarn
                 interior.removeObject(pair.Key, false);
                 pair.Value.TileLocation = dest;
                 interior.objects[dest] = pair.Value;
-            } 
+            }
+
+            Vector2 correctFeederTile = namedDestinations["(BC)99"];
+            var extraFeeders = SpiralSearch(interior, "(BC)99", startCenter, maxRadius: 50)
+                .Where(f => f.tile != correctFeederTile)
+                .ToList();
+            foreach (var (tile, _) in extraFeeders)
+                interior.removeObject(tile, false); 
         }
 
         [HarmonyPatch(typeof(NPC), "updateConstructionAnimation")]
